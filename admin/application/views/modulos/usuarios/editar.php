@@ -13,7 +13,7 @@
 					</nav>
 				</div>
 				<div class="col-lg-6 col-5 text-right">
-					<a href="<?php echo site_url("menus");?>" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Todos</a>
+					<a href="<?php echo site_url("usuarios");?>" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Todos</a>
 					<!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
 				</div>
 			</div>
@@ -43,18 +43,17 @@
 								<div class="col-md-6">
 									<div class="form-group">
 									<label class="bmd-label-floating">Tipo de Usuário: </label>
-									<?php echo form_dropdown('tipo_id', $listaUsuarios, set_value('tipo_id', @$item->tipo_id), 
+									<?php echo form_dropdown('tipo_id', $listaTipos, set_value('tipo_id', @$item->tipo_id), 
 										'data-size="7" data-live-search="true" class="form-control fill_select btn_in own_selectbox" id="usuarios_tipo"'); ?>
 										<small style="color:#F65676"><?php echo form_error('tipo_id'); ?></small>
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-									<label class="bmd-label-floating">Lista de Usuários</label>
-										<select for="usuario_id" name="usuario_id" id="usuario_id" class="form-control" disabled>
-											<option>Selecione o Tipo de Usuário ao lado.</option>
-										</select>
-										<small style="color:#F65676"><?php echo form_error('cpf'); ?></small>
+									<label class="bmd-label-floating">Lista de Usuário: </label>
+									<?php echo form_dropdown('usuario_id', $listaProfissionais, set_value('usuario_id', @$item->usuario_id), 
+										'data-size="7" data-live-search="true" class="form-control fill_select btn_in own_selectbox" id="usuarios"'); ?>
+										<small style="color:#F65676"><?php echo form_error('usuario_id'); ?></small>
 									</div>
 								</div>
 							</div>
@@ -127,27 +126,7 @@
 	</div>
 
 <script type="text/javascript">
-	var base_url = "<?= base_url() ?>";
-    var tipo_id = $("#usuarios_tipo").val();
-
-    $.post(base_url+'/usuarios/get_usuarios_por_tipo', {
-        tipo_id : tipo_id
-    }, function(data){
-        $("#usuario_id").html(data);
-        $("#usuario_id").removeAttr('disabled');
-    });
-
-	$('#usuarios_tipo').change(function() {
-		var tipo_id = $("#usuarios_tipo").val();
-
-		$.post(base_url+'/usuarios/get_usuarios_por_tipo', {
-			tipo_id : tipo_id
-		}, function(data){
-			$("#usuario_id").html(data);
-			$("#usuario_id").removeAttr('disabled');
-		});
-	});
 </script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/modulos/usuarios/js.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/modulos/usuarios/validate.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-checktree.js"></script>
+<!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jquery-checktree.js"></script> -->

@@ -61,7 +61,7 @@
 								<?php foreach($listaUsuarios as $item): ?>
 								<tr id="project_id_<?php echo $item->id; ?>">
 									<td><?php echo $item->id; ?></td>	
-									<td><?php echo $item->nome; ?></td>
+									<td><?php echo $item->nome_prof; ?></td>
 									<!-- <td><?php echo (($item->status == 1) ? '<span class="label label-primary"> Ativo </span>' : (($item->status == 2) ? '<span class="label label-success"> Concluído </span>' : '<span class="label label-danger"> Inativo </span>')); ?></td> -->
 									<!-- (($condition_1) ? "output_1" : (($condition_2) ?  "output_2" : "output_3")); -->
 									<td><?php echo $item->usuario; ?></td>

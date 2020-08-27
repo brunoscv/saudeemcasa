@@ -27,6 +27,7 @@
 				<div class="col-lg-6 col-5 text-right">
 					<!-- <a href="<?= base_url()?>consultas/criar" class="btn btn-sm btn-neutral"><i class="fa fa-plus"></i> Novo</a> -->
 					<!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
+					<a href="<?= base_url() . 'consultas/atendimentos/' . $listaAtendimentos[0]->consultas_id;?>"  class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Lista</a>
 				</div>
 			</div>
 		</div>

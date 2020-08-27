@@ -315,7 +315,7 @@
 									<img alt="Image placeholder" src="<?php echo base_url(); ?>assets/img/theme/user.png">
 								</span>
 								<div class="media-body ml-2 d-none d-lg-block">
-									<span class="mb-0 text-sm  font-weight-bold"><?= $userdata['nome']; ?></span>
+									<span class="mb-0 text-sm  font-weight-bold"><?= $userdata['usuario']; ?></span>
 								</div>
 							</div>
 						</a>

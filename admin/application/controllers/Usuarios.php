@@ -7,9 +7,12 @@ class Usuarios extends MY_Controller {
 		
 		$this->_auth();
 
+		$this->load->model("Profissionais_model");
+
 		//adiciona os dados do login para fazer as visualizacoes de informacoes
 		$this->data['admin'] 	= $this->session->userdata('userdata')['principal'];
 		$this->data['user_id'] 	= $this->session->userdata('userdata')['id'];
+		$this->data['tipo_id'] 	= $this->session->userdata('userdata')['tipo_id'];
 		
 		$this->data['campos'] = array(
 			'u.nome' => 'Nome',
@@ -75,9 +78,12 @@ class Usuarios extends MY_Controller {
 		// $this->pagination->initialize($config);
 		
 		// $this->data['paginacao'] = $this->pagination->create_links();
-			
-		$resultUsuarios = $this->db->select("*")->from("usuarios AS u")->get();
+
+		//$displayed = ($this->data['tipo_id'] != 1) ? $displayed = "style='display:none;'" : $displayed = "style='display:block;'";	
+		$resultUsuarios = $this->db->select("u.*, p.nome_prof")->from("usuarios AS u")->join('profissionais AS p', "p.id = u.usuario_id")->get();
+
 		$this->data['listaUsuarios'] = $resultUsuarios->result();
+		//$this->data['displayed'] 	 = $displayed;
 	}
 	
 	public function criar(){
@@ -90,9 +96,15 @@ class Usuarios extends MY_Controller {
 		//Campos relacionados
 		//caso seja necessario adicione os relacionamento aqui
 		$usuarios_tipos = $this->db->from("usuarios_tipos")->get()->result();
-		$this->data['listaUsuarios'] = array();
-		foreach ($usuarios_tipos as $usuario) {
-			$this->data['listaUsuarios'][$usuario->id] = $usuario->descricao;
+		$this->data['listaTipos'] = array();
+		foreach ($usuarios_tipos as $tipo) {
+			$this->data['listaTipos'][$tipo->id] = $tipo->descricao;
+		}
+		$profissionais = $this->Profissionais_model->getProfissionais();
+		$this->data['listaProfissionais'] = array();
+		$this->data['listaProfissionais'][''] = "Escolha um Profissional";
+		foreach ($profissionais as $profissionais) {
+			$this->data['listaProfissionais'][$profissionais->id] = $profissionais->nome_prof;
 		}
 		//fim Campos relacionados
 		
@@ -156,9 +168,14 @@ class Usuarios extends MY_Controller {
 		//Campos relacionados
 		//caso seja necessario adicione os relacionamento aqui
 		$usuarios_tipos = $this->db->from("usuarios_tipos")->get()->result();
-		$this->data['listaUsuarios'] = array();
-		foreach ($usuarios_tipos as $usuario) {
-			$this->data['listaUsuarios'][$usuario->id] = $usuario->descricao;
+		$this->data['listaTipos'] = array();
+		foreach ($usuarios_tipos as $tipo) {
+			$this->data['listaTipos'][$tipo->id] = $tipo->descricao;
+		}
+		$profissionais = $this->Profissionais_model->getProfissionais();
+		$this->data['listaProfissionais'] = array();
+		foreach ($profissionais as $profissionais) {
+			$this->data['listaProfissionais'][$profissionais->id] = $profissionais->nome_prof;
 		}
 		//fim Campos relacionados
 		
@@ -178,22 +195,11 @@ class Usuarios extends MY_Controller {
 					$usuario = array();
 					$usuario['id'] 			= $id; 
 					$usuario['usuario'] 	= strtolower($this->input->post("usuario",TRUE));
-					$usuario['nome'] 		= $this->input->post("nome",TRUE);
 					$usuario['email'] 		= $this->input->post("email",TRUE);
 					$usuario['updatedAt'] 	= date("Y-m-d H:i:s");
 
 					$usuario["tipo_id"] 	  = $this->input->post("tipo_id",TRUE);
 					$usuario["usuario_id"] = $this->input->post("usuario_id",TRUE);
-					
-					switch ($usuario["tipo_id"]) {
-						case 1:
-							$usuarios = $this->db->select("nome_corretor")->from("corretores")->where("id", $usuario["usuario_id"])->get()->result();
-							$usuario["nome"] = $usuarios[0]->nome_corretor;
-						break;
-						default:
-							$usuario["nome"] = "Saude em Casa";
-						break;
-					}
 					
 					if( $this->input->post("senha") ){
 						// $usuario['senha'] 	= $this->encrypt->encode($this->input->post("senha",TRUE));
@@ -251,21 +257,25 @@ class Usuarios extends MY_Controller {
 	 */
 	public function get_usuarios_por_tipo() {
 		$tipo_usuario_id = $this->input->post("tipo_id");
-		$options = "";
-		switch ($tipo_usuario_id) {
-			case 1:
-				$usuarios = $this->db->select("id, nome_prof")->from("profissionais")->get()->result();
-				foreach ($usuarios as $key => $u) {
-					$options .= "<option value='{$u->id}'>$u->nome_prof</option>".PHP_EOL;
-				}
-				print_r( $options );
-				break;
-			
-			default:
-				$options .= "<option value='0'>Saude em Casa</option>";
-				print_r( $options );
-				break;
+
+		//Campos relacionados
+		//caso seja necessario adicione os relacionamento aqui
+		$usuarios = $this->db->select("p.id, p.nome_prof, u.usuario_id")->from("profissionais AS p")->join("usuarios AS u", "u.usuario_id = p.id")->where("u.tipo_id", $tipo_usuario_id)->get()->result();
+		$this->data['lista'] = array();
+		foreach ($usuarios as $usuario) {
+			$this->data['lista'][$usuario->id] = $usuario->nome_prof;
 		}
+		//fim Campos relacionados
+
+
+
+
+
+		// $options = "";
+		// foreach ($usuarios as $key => $u) {
+		// 	$options .= "<option value='{$u->id}'>$u->nome_prof</option>".PHP_EOL;
+		// }
+		// print_r  ($options ) ;
 	}
 	
 }

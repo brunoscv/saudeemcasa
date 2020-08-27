@@ -25,7 +25,7 @@
 					</nav>
 				</div>
 				<div class="col-lg-6 col-5 text-right">
-					<a href="<?= base_url()?>consultas/criar" class="btn btn-sm btn-neutral"><i class="fa fa-plus"></i> Novo</a>
+					<a href="<?= base_url()?>consultas/criar" class="btn btn-sm btn-neutral" <?= $displayed ?>><i class="fa fa-plus"></i> Novo</a>
 					<!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
 				</div>
 			</div>
@@ -57,7 +57,7 @@
 									<th>Atendimentos</th>
 									<th>Status</th>
 									<th>Criado</th>
-									<th class="td-actions"></th>
+									<th class="td-actions" <?= $displayed ?>></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -70,7 +70,7 @@
 									<td class="text-center"><a class="btn btn-primary btn-sm" href="<?php echo base_url().'consultas/atendimentos/'. $item->id;?>"><i class="fa fa-stethoscope"></i></a></td>
 									<td><?php echo ($item->status == 1 ? '<span class="badge badge-success"> Ativo </span>' : '<span class="badge badge-danger"> Inativo </span>') ?></td>
 									<td><?php echo date("d/m/Y", strtotime($item->createdAt)); ?></td>
-									<td class="">
+									<td class="" <?= $displayed ?>>
 										<a class="mr-2" href="<?php echo site_url("consultas/editar/".$item->id); ?>"><i class='fa fa-pen'></i></a>
 										<a class="" href="<?php echo site_url("consultas/delete/". $item->id); ?>"><i class='fa fa-trash'></i></a>
 									</td>

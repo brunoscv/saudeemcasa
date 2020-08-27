@@ -25,7 +25,9 @@
 					</nav>
 				</div>
 				<div class="col-lg-6 col-5 text-right">
-					<a href="<?= base_url()?>consultas/criar" class="btn btn-sm btn-neutral"><i class="fa fa-plus"></i> Novo</a>
+					<a href="<?= base_url()?>consultas" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Lista</a>
+					<a href="<?= base_url()?>consultas/criar" class="btn btn-sm btn-neutral" <?= $displayed ?>><i class="fa fa-plus"></i> Novo</a>
+					
 					<!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
 				</div>
 			</div>
@@ -52,13 +54,13 @@
 								<tr>
 									<th>Paciente</th>
 									<th>Profissional</th>
-									<th style="text-align:center">Qtds</th>
-									<th style="text-align:center">Inicio</th>
-									<th style="text-align:center">Fim</th>
-									<th style="text-align:center">Sessões</th>
-									<th style="text-align:center">Renovar</th>
-									<th style="text-align:center">Status</th>
-									<th class="td-actions"></th>
+									<th class="text-center">Qtds</th>
+									<th class="text-center">Inicio</th>
+									<th class="text-center">Fim</th>
+									<th class="text-center">Sessões</th>
+									<th class="text-center" <?= $displayed ?>>Renovar</th>
+									<th class="text-center">Status</th>
+									<th class="td-actions" <?= $displayed ?>></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -67,13 +69,13 @@
 									<!-- <td><span class="label label-danger"> Inativo </span></td> -->
 									<td><?php echo $item->nome_pac; ?></td>
 									<td><?php echo $item->nome_prof; ?></td>
-									<td style="text-align:center"><?php echo $item->qtd_atendimentos; ?></td>
-									<td style="text-align:center"><?php echo date("d/m/Y", strtotime($item->data_inicio)); ?></td>
-									<td style="text-align:center"><?php echo date("d/m/Y", strtotime($item->data_fim)); ?></td>
-									<td class="text-center" style="text-align:center"><a class="btn btn-primary btn-sm" href="<?php echo base_url().'consultas/sessoes/'. $item->consultas_id . '/' . $item->id;?>"><i class="fa fa-user-md"></i></a></td>
-									<td class="text-center" style="text-align:center"><a class="btn btn-warning btn-sm"  href="<?php echo base_url().'consultas/renovar/'. $item->consultas_id;?>"><i class="fa fa-random"></i></a></td>
+									<td class="text-center"><?php echo $item->qtd_atendimentos; ?></td>
+									<td class="text-center"><?php echo date("d/m/Y", strtotime($item->data_inicio)); ?></td>
+									<td class="text-center"><?php echo date("d/m/Y", strtotime($item->data_fim)); ?></td>
+									<td class="text-center"><a class="btn btn-primary btn-sm" href="<?php echo base_url().'consultas/sessoes/'. $item->consultas_id . '/' . $item->id;?>"><i class="fa fa-user-md"></i></a></td>
+									<td class="text-center" <?= $displayed ?>><a class="btn btn-warning btn-sm"  href="<?php echo base_url().'consultas/renovar/'. $item->consultas_id;?>"><i class="fa fa-random"></i></a></td>
 									<td><?php echo ($item->status == 1 ? '<span class="badge badge-success"> Ativo </span>' : '<span class="badge badge-danger"> Inativo </span>') ?></td>
-									<td class="">
+									<td class="" <?= $displayed ?>>
 										<a class="mr-2" href="<?php echo site_url("consultas/editar/".$item->consultas_id); ?>"><i class='fa fa-pen'></i></a>
 										<a class="" href="<?php echo site_url("consultas/delete/". $item->id); ?>"><i class='fa fa-trash'></i></a>
 									</td>

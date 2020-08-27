@@ -7,7 +7,12 @@ class Consultas extends MY_Controller {
 		
         $this->load->model("Consultas_model");
         $this->load->model("Pacientes_model");
-        $this->load->model("Profissionais_model");
+		$this->load->model("Profissionais_model");
+		
+		//adiciona os dados do login para fazer as visualizacoes de informacoes
+		$this->data['user_id'] = $this->session->userdata('userdata')['id'];
+		$this->data['admin']   = $this->session->userdata('userdata')['principal'];
+		$this->data['tipo_id'] = $this->session->userdata('userdata')['tipo_id'];
 		
 		//adicione os campos da busca
         //$camposFiltros["c.id"] = "Cod.";
@@ -19,9 +24,6 @@ class Consultas extends MY_Controller {
 	}
 	
 	function index(){
-		$user_id = $this->session->userdata('userdata')['id'];
-		$admin = $this->session->userdata('userdata')['principal'];
-
 		//arShow($this->session->userdata());exit;
 		//$perPage = '10';
 		//$offset = ($this->input->get("per_page")) ? $this->input->get("per_page") : "0";
@@ -45,8 +47,8 @@ class Consultas extends MY_Controller {
 			}
 		}
 
-		if($admin != 1) {
-			$this->db->where("c.profissionais_id", $user_id);
+		if($this->data['admin'] != 1) {
+			$this->db->where("c.profissionais_id", $this->data['user_id']);
 		}
 		$quantidadeConsultas = $countConsultas->quantidade;
 
@@ -72,10 +74,16 @@ class Consultas extends MY_Controller {
 			}
 		}
 
-		if($admin != 1) {
-			$this->db->where("c.profissionais_id", $user_id);
+		if($this->data['admin'] != 1) {
+			$this->db->where("c.profissionais_id", $this->data['user_id']);
 		}
+
+		$displayed = ($this->data['tipo_id'] != 1) ? $displayed = "style='display:none;'" : $displayed = "style='display:block;'";
+		$this->data['displayed'] = $displayed;	
+		
+		$resultUsuarios = $this->db->select("u.*, p.nome_prof")->from("usuarios AS u")->join('profissionais AS p', "p.id = u.usuario_id")->get();
 		$this->data['listaConsultas'] = $resultConsultas->result();
+		
 		
 		//$this->load->library('pagination');
 		//$config['base_url'] = site_url("consultas/index")."?";
@@ -291,6 +299,9 @@ class Consultas extends MY_Controller {
 			$this->db->where("consultas_id", $consultas_id);
 		}
 		$this->data['listaAtendimentos'] = $resultAtendimentos->result();
+
+		$displayed = ($this->data['tipo_id'] != 1) ? $displayed = "style='display:none;'" : $displayed = "style='display:block;'";
+		$this->data['displayed'] = $displayed;	
 		
 
 		//$this->load->library('pagination');
