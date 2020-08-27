@@ -77,8 +77,8 @@
 									<td><?php echo ($item->status == 1 ? '<span class="badge badge-success"> Ativo </span>' : '<span class="badge badge-danger"> Inativo </span>') ?></td>
 									<td><?php echo date("m/d/Y", strtotime($item->createdAt)); ?></td>
 									<td class="">
-										<a class="mr-2" href="<?php echo site_url("profissionais/editar/".$item->id); ?>"><i class='fa fa-pen'></i></a>
-										<!-- <a class="" href="<?php echo site_url("profissionais/delete/". $item->id); ?>"><i class='fa fa-trash'></i></a> -->
+										<a class="mr-2" href="<?php echo site_url("profissionais/editar/".$item->id); ?>"><i class='fas fa-edit'></i></a>
+										<a class="" href="<?php echo site_url("profissionais/delete/". $item->id); ?>"><i class='fa fa-trash'></i></a>
 									</td>
 								</tr>
 								<?php endforeach; ?>

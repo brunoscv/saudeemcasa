@@ -114,6 +114,6 @@
 		</div>
 	</div>
 
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/modulos/menus/js.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/modulos/menus/validate.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/modulos/menus/js.js"></script>
+	<script type="text/javascript" src="<?php echo base_url(); ?>assets/modulos/menus/validate.js"></script>
 

@@ -28,6 +28,17 @@
 			background-color: transparent;
 			border-left: 0;
 		}
+		/* CUSTOM CSS */
+		table.dataTable tbody tr.selected a, table.dataTable tbody th.selected a, table.dataTable tbody td.selected a {
+			color: #525f7f;
+		}
+		table.dataTable tbody > tr.selected {
+			background-color: white;
+		}
+		table.dataTable tbody tr.selected, table.dataTable tbody th.selected, table.dataTable tbody td.selected {
+			color: #525f7f;
+		}
+		/* CUSTOM CSS */
 	</style>
 	<!-- Core -->
 	<script src="<?php echo base_url(); ?>assets/vendor/jquery/dist/jquery.min.js"></script>
@@ -35,6 +46,8 @@
 	<script src="<?php echo base_url(); ?>assets/vendor/js-cookie/js.cookie.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
+	<script src="<?php echo base_url(); ?>assets/js/validate/jquery.validate.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/validate/jquery.validate.rules.js"></script>
 	<script src="<?php echo base_url(); ?>assets/plugins/tablesaw/js/tablesaw.jquery.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/tablesaw/js/tablesaw-init.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/datetimepicker/js/jquery.datetimepicker.full.js"></script>

@@ -26,55 +26,58 @@ class Usuarios extends MY_Controller {
 	}
 	
 	public function index(){
-		//$perPage = '10';
-		//$offset = ($this->input->get("per_page")) ? $this->input->get("per_page") : "0";
+		// $perPage = '10';
+		// $offset = ($this->input->get("per_page")) ? $this->input->get("per_page") : "0";
 		
-		if( !is_null($this->input->get('busca')) ){
-			$campo = $this->input->get('filtro_field', true);
-			$valor = $this->input->get('filtro_valor', true);
+		// if( !is_null($this->input->get('busca')) ){
+		// 	$campo = $this->input->get('filtro_field', true);
+		// 	$valor = $this->input->get('filtro_valor', true);
 
-			if($campo && $valor){
-				if( array_key_exists($campo, $this->data['campos']) ){
-					$this->db->where("{$campo} LIKE","%".$valor."%");
-				}
-			}
-		}
-		/* if( !hasPerfil(1) ){
-			$this->db->where("id >",1);
-		} */
-		$countUsuarios = $this->db
-							->select("count(u.id) AS quantidade")
-							->from("usuarios AS u")
-							->get()->row();
+		// 	if($campo && $valor){
+		// 		if( array_key_exists($campo, $this->data['campos']) ){
+		// 			$this->db->where("{$campo} LIKE","%".$valor."%");
+		// 		}
+		// 	}
+		// }
+		// if( !hasPerfil(1) ){
+		// 	$this->db->where("id >",1);
+		// }
+		// $countUsuarios = $this->db
+		// 					->select("count(u.id) AS quantidade")
+		// 					->from("usuarios AS u")
+		// 					->get()->row();
 		
-		$quantidadeUsuarios = $countUsuarios->quantidade;
+		// $quantidadeUsuarios = $countUsuarios->quantidade;
 		
-		if( !is_null($this->input->get('busca')) ){
-			$campo = $this->input->get('filtro_field', true);
-			$valor = $this->input->get('filtro_valor', true);
+		// if( !is_null($this->input->get('busca')) ){
+		// 	$campo = $this->input->get('filtro_field', true);
+		// 	$valor = $this->input->get('filtro_valor', true);
 
-			if($campo && $valor){
-				if( array_key_exists($campo, $this->data['campos']) ){
-					$this->db->where("{$campo} LIKE","%".$valor."%");
-				}
-			}
-		}
+		// 	if($campo && $valor){
+		// 		if( array_key_exists($campo, $this->data['campos']) ){
+		// 			$this->db->where("{$campo} LIKE","%".$valor."%");
+		// 		}
+		// 	}
+		// }
 		
-	/* 	if( !hasPerfil(1) ){
-			$this->db->where("id >",1);
-		} */
-		$resultUsuarios = $this->db->select("*")->from("usuarios AS u")->limit($perPage,$offset)->get();
+		// if( !hasPerfil(1) ){
+		// 	$this->db->where("id >",1);
+		// }
+		// $resultUsuarios = $this->db->select("*")->from("usuarios AS u")->limit($perPage,$offset)->get();
 		
+		// $this->data['listaUsuarios'] = $resultUsuarios->result();
+		
+		// $this->load->library('pagination');
+		// $config['base_url'] = site_url("usuarios/index")."?";
+		// $config['total_rows'] = $quantidadeUsuarios;
+		// $config['per_page'] = $perPage;
+		
+		// $this->pagination->initialize($config);
+		
+		// $this->data['paginacao'] = $this->pagination->create_links();
+			
+		$resultUsuarios = $this->db->select("*")->from("usuarios AS u")->get();
 		$this->data['listaUsuarios'] = $resultUsuarios->result();
-		
-		//$this->load->library('pagination');
-		//$config['base_url'] = site_url("usuarios/index")."?";
-		//$config['total_rows'] = $quantidadeUsuarios;
-		//$config['per_page'] = $perPage;
-		
-		//$this->pagination->initialize($config);
-		
-		//$this->data['paginacao'] = $this->pagination->create_links(); 
 	}
 	
 	public function criar(){
@@ -88,7 +91,6 @@ class Usuarios extends MY_Controller {
 		//caso seja necessario adicione os relacionamento aqui
 		$usuarios_tipos = $this->db->from("usuarios_tipos")->get()->result();
 		$this->data['listaUsuarios'] = array();
-		$this->data['listaUsuarios'][''] = "Selecione um Tipo de Usuário";
 		foreach ($usuarios_tipos as $usuario) {
 			$this->data['listaUsuarios'][$usuario->id] = $usuario->descricao;
 		}
@@ -160,9 +162,7 @@ class Usuarios extends MY_Controller {
 		}
 		//fim Campos relacionados
 		
-		$usuario = $this->db
-						->from("usuarios AS m")
-						->where("id", $id)->get()->row();
+		$usuario = $this->db->from("usuarios AS m")->where("id", $id)->get()->row();
 		if( !$usuario ){
 			$this->session->set_flashdata("msg_error", "Usuário não encontrado!");
 			redirect('usuarios/index');

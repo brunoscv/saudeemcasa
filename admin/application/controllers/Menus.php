@@ -13,7 +13,7 @@ class Menus extends MY_Controller {
 	
 	public function index(){
 		//$perPage = '10';
-	//	$offset = ($this->input->get("per_page")) ? $this->input->get("per_page") : "0";
+		//	$offset = ($this->input->get("per_page")) ? $this->input->get("per_page") : "0";
 		
 		if( !is_null($this->input->get('busca')) ){
 			$campo = $this->input->get('filtro_field', true);
@@ -26,9 +26,9 @@ class Menus extends MY_Controller {
 			}
 		}
 		$countMenus = $this->db
-							->select("count(id) AS quantidade")
-							->from("menus m")
-							->get()->row();
+			->select("count(id) AS quantidade")
+			->from("menus m")
+			->get()->row();
 		
 		$quantidadeMenus = $countMenus->quantidade;
 		
@@ -61,7 +61,7 @@ class Menus extends MY_Controller {
 		
 		//$thi/s->pagination->initialize($config);
 		
-		/$this->data['paginacao'] = $this->pagination->create_links(); 
+		//$this->data['paginacao'] = $this->pagination->create_links(); 
 	}
 	
 	public function criar(){

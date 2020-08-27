@@ -1,3 +1,15 @@
+<!-- Cards Header -->
+<style type="text/css">
+.table th, .table td {
+    padding: 0.2em 0;
+    vertical-align: middle;
+}
+.table-responsive {
+    display: block;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+</style>
 <div class="header bg-gradient-template pb-6">
 	<div class="container-fluid">
 		<div class="header-body">
