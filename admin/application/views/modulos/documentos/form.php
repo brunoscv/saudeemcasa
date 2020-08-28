@@ -7,13 +7,13 @@
 					<nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
 						<ol class="breadcrumb breadcrumb-links breadcrumb-dark">
 							<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-							<li class="breadcrumb-item"><a href="#">Convênios</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Novo Convenio</li>
+							<li class="breadcrumb-item"><a href="#">Documentos</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Novo Documento</li>
 						</ol>
 					</nav>
 				</div>
 				<div class="col-lg-6 col-5 text-right">
-					<a href="<?= base_url()?>documentos" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Lista de Convênios</a>
+					<a href="<?= base_url()?>documentos" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Lista</a>
 					<!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
 				</div>
 			</div>
@@ -29,7 +29,7 @@
           	<div class="card">
 				<!-- Card header -->
 				<div class="card-header">
-					<h3 class="mb-0">Painel de Convênios</h3>
+					<h3 class="mb-0">Painel de Documentos</h3>
 						<?php $this->load->view('layout/messages.php'); ?>
 					<!-- <p class="text-sm mb-0">
 					.

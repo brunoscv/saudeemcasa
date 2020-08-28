@@ -10,6 +10,10 @@ class Documentos extends MY_Controller {
 		$this->load->model("Documentos_model");
 		$this->load->model("Profissionais_model");
 
+		$this->data['user_id'] = $this->session->userdata('userdata')['id'];
+		$this->data['admin'] = $this->session->userdata('userdata')['principal'];
+		$this->data['tipo_id'] = $this->session->userdata('userdata')['tipo_id'];
+
 		//adicione os campos da busca
 		$camposFiltros["id"] = "Id";
 		$camposFiltros["nome_convenio"] = "Nome Convenio";
@@ -17,32 +21,42 @@ class Documentos extends MY_Controller {
 	}
 	
     public function index(){
-		$user_id = $this->session->userdata('userdata')['id'];
-		$admin = $this->session->userdata('userdata')['principal'];
 		
-        $resultDocumentos = $this->db
-                            ->select("d.*, pr.nome_prof")
-                            ->from("documentos AS d")
-							->join("profissionais AS pr", "d.profissional_id = pr.id")
-                            ->get();
-		if($admin != 1) {
-			$this->db->where("c.profissionais_id", $user_id);
+		if($this->data['admin'] != 1) {
+			$this->db->where("d.profissional_id", $this->data['user_id']);
 		}
+
+        $resultDocumentos = $this->db
+			->select("d.*, pr.nome_prof")
+			->from("documentos AS d")
+			->join("profissionais AS pr", "d.profissional_id = pr.id")
+			->get();
+		
 		$this->data['listaDocumentos'] = $resultDocumentos->result();
+
+		$displayed = ($this->data['tipo_id'] != 1) ? $displayed = "style='display:none;'" : $displayed = "";
+		$this->data['displayed'] = $displayed;
+
 	}
 
 	public function criar(){
-		$profissionais = $this->Profissionais_model->getProfissionais();
+		
+		//Campos relacionados
+		//caso seja necessario adicione os relacionamento aqui
+		if($this->data['admin'] != 1) {
+			$profissionais = $this->Profissionais_model->getProfissionalById($this->data['user_id']);
+		} else {
+			$profissionais = $this->Profissionais_model->getProfissionais();
+		}
 		$this->data['listaProfissionais'] = array();
-		$this->data['listaProfissionais'][''] = "Escolha um Profissional";
 		foreach ($profissionais as $profissionais) {
 			$this->data['listaProfissionais'][$profissionais->id] = $profissionais->nome_prof;
 		}
+		//fim Campos relacionados
 	}
 	
 	public function salvar_documentos() {
 		$data = array();
-		//arShow($_FILES['files']);exit;
 		if($this->input->post('enviar')){
 			if(isset($_FILES['files']['name']) && !empty($_FILES['files']['name'])){
 				$filesCount = count($_FILES['files']['name']);
@@ -70,13 +84,8 @@ class Documentos extends MY_Controller {
 						$projectsFile[$i]['profissional_id']	= $this->input->post("profissionais_id", TRUE);
 						$projectsFile[$i]['descricao']			= $this->input->post("descricao", TRUE);
 						$projectsFile[$i]['nome_arquivo']		= $fileData['file_name'];
-						/**$projectsFile[$i]['tamanho'] 		= $fileData['file_size'];
-						$projectsFile[$i]['tipo'] 				= $fileData['file_type']; */
-						$projectsFile[$i]['url'] 				= base_url() . 'public/uploads/arquivos/' . date("Ymd") . '/';
+						$projectsFile[$i]['url'] 				= 'public/uploads/arquivos/' . date("Ymd") . '/';
 						$projectsFile[$i]['data_envio'] 		= formatar_data($this->input->post("data_envio", TRUE));
-						/**$projectsFile[$i]['clientes_id']		= 1;
-						$projectsFile[$i]['status'] 			= 1;
-						$projectsFile[$i]['createdAt']			= date("Y-m-d H:i:s"); */
 						if(!empty($projectsFile)){
 							$this->db->insert("documentos", $projectsFile[$i]);
 

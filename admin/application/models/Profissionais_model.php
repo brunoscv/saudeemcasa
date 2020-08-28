@@ -11,5 +11,10 @@ class Profissionais_model extends CI_Model{
 		return $this->db->query(" SELECT * FROM profissionais ")
 						->result();
 	}
+
+	public function getProfissionalById($profissional_id) {
+		return $this->db->query(" SELECT * FROM profissionais WHERE id = $profissional_id")
+						->result();
+	}
 	
 }

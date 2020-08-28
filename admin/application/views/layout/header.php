@@ -48,6 +48,7 @@
 	<script src="<?php echo base_url(); ?>assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/validate/jquery.validate.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/validate/jquery.validate.rules.js"></script>
+	<script src="<?php echo base_url(); ?>assets/plugins/moneyinput/jquery.maskMoney.js"></script>
 	<script src="<?php echo base_url(); ?>assets/plugins/tablesaw/js/tablesaw.jquery.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/tablesaw/js/tablesaw-init.js"></script>
     <script src="<?php echo base_url(); ?>assets/plugins/datetimepicker/js/jquery.datetimepicker.full.js"></script>

@@ -78,7 +78,7 @@ class Consultas extends MY_Controller {
 			$this->db->where("c.profissionais_id", $this->data['user_id']);
 		}
 
-		$displayed = ($this->data['tipo_id'] != 1) ? $displayed = "style='display:none;'" : $displayed = "style='display:block;'";
+		$displayed = ($this->data['tipo_id'] != 1) ? $displayed = "style='display:none;'" : $displayed = "";
 		$this->data['displayed'] = $displayed;	
 		
 		$resultUsuarios = $this->db->select("u.*, p.nome_prof")->from("usuarios AS u")->join('profissionais AS p', "p.id = u.usuario_id")->get();
@@ -300,7 +300,7 @@ class Consultas extends MY_Controller {
 		}
 		$this->data['listaAtendimentos'] = $resultAtendimentos->result();
 
-		$displayed = ($this->data['tipo_id'] != 1) ? $displayed = "style='display:none;'" : $displayed = "style='display:block;'";
+		$displayed = ($this->data['tipo_id'] != 1) ? $displayed = "style='display:none;'" : $displayed = "";
 		$this->data['displayed'] = $displayed;	
 		
 

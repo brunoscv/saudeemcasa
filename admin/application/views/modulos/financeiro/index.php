@@ -41,7 +41,7 @@
           	<div class="card">
 				<!-- Card header -->
 				<div class="card-header">
-					<h3 class="mb-0">Painel de Convenios</h3>
+					<h3 class="mb-0">Painel Financeiro</h3>
 					<!-- <p class="text-sm mb-0">
 					.
 					</p> -->
@@ -68,12 +68,10 @@
 									<td><?php echo $item->nome_prof; ?></td>
 									<td><?php echo date("d/m/Y", strtotime($item->data_nota)); ?></td>
 									<td><?php echo $item->qtd_atendimentos; ?></td>
-									<td><?php echo $item->valor_nota; ?></td>
+									<td><?php echo number_format($item->valor_nota, 2, ',', '.'); ?></td>
 									<td><?php echo ($item->status == 1 ? '<span class="label label-success"> Ativo </span>' : '<span class="label label-danger"> Inativo </span>') ?></td>
 									<td><?php echo date("d/m/Y", strtotime($item->createdAt)); ?></td>
-									<td class="td-actions">
-										<a href="<?php echo site_url("financeiro/editar/".$item->id); ?>" class="mr-2"><i class="fa fa-pencil text-info font-16"></i></a>
-									</td>
+									<td><a href="<?php echo site_url("financeiro/editar/".$item->id); ?>" class="mr-2"><i class="fa fa-pencil text-info font-16"></i></a></td>
 								</tr>
 								<?php endforeach; ?>
 							</tbody>

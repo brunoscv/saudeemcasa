@@ -7,13 +7,13 @@
 					<nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
 						<ol class="breadcrumb breadcrumb-links breadcrumb-dark">
 							<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-							<li class="breadcrumb-item"><a href="#">Convênios</a></li>
+							<li class="breadcrumb-item"><a href="#">Financeiro</a></li>
 							<li class="breadcrumb-item active" aria-current="page">Novo Convenio</li>
 						</ol>
 					</nav>
 				</div>
 				<div class="col-lg-6 col-5 text-right">
-					<a href="<?= base_url()?>financeiro" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Lista de Convênios</a>
+					<a href="<?= base_url()?>financeiro" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Lista</a>
 					<!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
 				</div>
 			</div>
@@ -29,14 +29,14 @@
           	<div class="card">
 				<!-- Card header -->
 				<div class="card-header">
-					<h3 class="mb-0">Painel de Convênios</h3>
+					<h3 class="mb-0">Painel de Financeiro</h3>
 						<?php $this->load->view('layout/messages.php'); ?>
 					<!-- <p class="text-sm mb-0">
 					.
 					</p> -->
 				</div>
 				<div class="card-header">
-				<form id="form_atendimentos" action="<?php echo current_url(); ?>" class="form-horizontal" method="post">
+				<form id="form_financeiro" action="<?php echo current_url(); ?>" class="form-horizontal" method="post">
 						<input name="id" type="hidden" id="id" class="form-control" value="<?php echo set_value("id", @$item->id) ?>" />				
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="profissional_id">Profissional</label>
@@ -63,10 +63,16 @@
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="valor_nota">Valor da Nota</label>
 								<div class="col-sm-10">
-									<input name="valor_nota" type="number" id="valor_nota" class="form-control" step="0.01" value="<?php echo set_value("valor_nota", formatar_moeda(@$item->valor_nota))?>" />
-								<?php echo form_error('valor_nota'); ?>
+									<div class="input-group mb-3">
+										<div class="input-group-prepend">
+											<span class="input-group-text" id="basic-addon1">R$</span>
+										</div>
+										<input name="valor_nota" type="text" id="valor_nota" class="form-control" step="0.01" value="<?php echo set_value("valor_nota", formatar_moeda(@$item->valor_nota))?>" />
+										<?php echo form_error('valor_nota'); ?>
+									</div>
 								</div>
 							</div>
+							
 																			
 						<div class="form-actions">
 							<div class="col-sm-10 col-offset-2">
@@ -87,9 +93,7 @@
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		$("#data_nota").mask("99/99/9999");
-		// $("#data_fim").mask("99/99/9999");
-		// $("#cpf_prof").mask("999.999.999-99");
-		// $("#especialidades").select2();
+		$("#valor_nota").maskMoney({allowNegative: false, thousands:'.', decimal:','});
 	});
 </script>
 

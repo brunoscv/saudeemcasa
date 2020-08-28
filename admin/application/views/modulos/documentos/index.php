@@ -26,7 +26,6 @@
 				</div>
 				<div class="col-lg-6 col-5 text-right">
 					<a href="<?= base_url()?>documentos/criar" class="btn btn-sm btn-neutral"><i class="fa fa-plus"></i> Novo</a>
-					<!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
 				</div>
 			</div>
 		</div>
@@ -42,9 +41,6 @@
 				<!-- Card header -->
 				<div class="card-header">
 					<h3 class="mb-0">Painel de Convenios</h3>
-					<!-- <p class="text-sm mb-0">
-					.
-					</p> -->
 				</div>
 				<div class="table-responsive py-4">
 					<table class="table table-flush" id="datatable-basic">
@@ -53,10 +49,8 @@
 									<th>#</th>
 									<th>Profissional</th>
 									<th>Nome Doc.</th>
-									<!--<th>URL</th>-->
 									<th>Data Envio.</th>
 									<th>Download</th>
-									<th class="td-actions"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -65,16 +59,8 @@
 									<td><?php echo $item->id; ?></td>
 									<td><?php echo $item->nome_prof; ?></td>
 									<td><?php echo $item->descricao; ?></td>
-									<!--<td><?php echo $item->url; ?></td> -->
 									<td><?php echo date("d/m/Y", strtotime($item->data_envio)); ?></td>
-									<!--<td><?php echo $item->cidade_pac; ?></td>
-									<td><?php echo $item->uf_pac; ?></td>
-									<td><?php echo ($item->status == 1 ? '<span class="label label-success"> Ativo </span>' : '<span class="label label-danger"> Inativo </span>') ?></td>
-									<td><?php echo date("d/m/Y", strtotime($item->createdAt)); ?></td> -->
-									<td><a href="<?php echo $item->url . $item->nome_arquivo; ?>" class="mr-2"><i class="fa fa-download text-info font-16"></i></a></td>
-									<td class="td-actions">
-										
-									</td>
+									<td><a href="<?php echo base_url() . $item->url . $item->nome_arquivo; ?>" class="mr-2" target="_blank"><i class="fa fa-download text-info font-16"></i></a></td>
 								</tr>
 								<?php endforeach; ?>
 							</tbody>
