@@ -46,23 +46,6 @@
 							</div>
 							<!-- /controls -->
 						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-2 control-label" for="status">Status</label>
-							<div class="col-sm-10">
-								<input type="text" value="<?php echo set_value("status", @$item->status); ?>" class="form-control" name="status" id="status">
-								<?php echo form_error('status'); ?>
-							</div>
-							<!-- /controls -->
-						</div>
-						<!-- /control-group -->
-
-						<div class="col-md-6">
-                        <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating">Fist Name</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
 
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">

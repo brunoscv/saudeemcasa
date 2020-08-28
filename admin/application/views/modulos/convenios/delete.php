@@ -15,9 +15,9 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="nome_conselho">Nome convenios</label>
+							<label class="col-sm-2 control-label" for="nome_convenio">Nome convenios</label>
 							<div class="col-sm-10">
-								<input type="text" disabled="" class="form-control" value="<?php echo set_value("nome_conselho", $item->nome_conselho); ?>" name="nome_conselho" id="nome_conselho" placeholder="ex: efortes">
+								<input type="text" disabled="" class="form-control" value="<?php echo set_value("nome_convenio", $item->nome_convenio); ?>" name="nome_convenio" id="nome_convenio" placeholder="ex: efortes">
 							</div>
 						</div>
 

@@ -73,7 +73,7 @@ var DatatableButtons = (function() {
 		// https://datatables.net/manual/options
 
 		var options = {
-
+			ordering: false,
 			lengthChange: !1,
 			dom: 'Bfrtip',
 			buttons: buttons,

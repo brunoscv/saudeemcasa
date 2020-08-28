@@ -52,7 +52,7 @@
 						<thead class="thead-light">
 							<tr>
 								<th>#</th>
-								<th>Nome Conselho</th>
+								<th>Nome Paciente</th>
 								<th>Status</th>
 								<th>Criado</th>
 								<th class="">Ações</th>

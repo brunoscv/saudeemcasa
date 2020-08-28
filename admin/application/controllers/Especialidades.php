@@ -112,7 +112,6 @@ class Especialidades extends MY_Controller {
 					$especialidade = array();
 					$especialidade['id']			= $this->input->post('id', true);
 					$especialidade['nome_espec']	= $this->input->post('nome_espec', true);
-					$especialidade['status']		= $this->input->post('status', true);
 					$especialidade['updatedAt']		= date("Y-m-d");
 
 					$this->db->where("id",$id);

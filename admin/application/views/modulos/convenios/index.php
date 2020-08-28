@@ -41,7 +41,7 @@
           	<div class="card">
 				<!-- Card header -->
 				<div class="card-header">
-					<h3 class="mb-0">Painel de Convenios</h3>
+					<h3 class="mb-0">Painel de Convênios</h3>
 					<!-- <p class="text-sm mb-0">
 					.
 					</p> -->
@@ -51,7 +51,7 @@
 						<thead class="thead-light">
 							<tr>
 								<th>#</th>
-								<th>Nome Conselho</th>
+								<th>Nome Convênio</th>
 								<th>Status</th>
 								<th>Criado</th>
 								<th class="">Ações</th>

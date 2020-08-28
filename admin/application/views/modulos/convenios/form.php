@@ -13,7 +13,7 @@
 					</nav>
 				</div>
 				<div class="col-lg-6 col-5 text-right">
-					<a href="<?= base_url()?>conselhos" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Lista de Convênios</a>
+					<a href="<?= base_url()?>convenios" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Lista</a>
 					<!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
 				</div>
 			</div>
@@ -36,38 +36,21 @@
 					</p> -->
 				</div>
 				<div class="card-header">
-					<form id="form_conselhos" class="form-horizontal" method="post" action="<?php echo current_url(); ?>">
+					<form id="form_convenios" class="form-horizontal" method="post" action="<?php echo current_url(); ?>">
 						<input type="hidden" id="id" name="id" value="<?php echo set_value("id", @$item->id); ?>" />
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="nome_conselho">Nome Convenio</label>
+							<label class="col-sm-2 control-label" for="nome_convenio">Nome Convenio</label>
 							<div class="col-sm-10">
-								<input type="text" value="<?php echo set_value("nome_conselho", @$item->nome_conselho); ?>" class="form-control" name="nome_conselho" id="nome_conselho">
-								<?php echo form_error('nome_conselho'); ?>
+								<input type="text" value="<?php echo set_value("nome_convenio", @$item->nome_convenio); ?>" class="form-control" name="nome_convenio" id="nome_convenio">
+								<?php echo form_error('nome_convenio'); ?>
 							</div>
 							<!-- /controls -->
 						</div>
-						
-						<div class="form-group">
-							<label class="col-sm-2 control-label" for="status">Status</label>
-							<div class="col-sm-10">
-								<input type="text" value="<?php echo set_value("status", @$item->status); ?>" class="form-control" name="status" id="status">
-								<?php echo form_error('status'); ?>
-							</div>
-							<!-- /controls -->
-						</div>
-						<!-- /control-group -->
-
-						<div class="col-md-6">
-                        <div class="form-group bmd-form-group">
-                          <label class="bmd-label-floating">Fist Name</label>
-                          <input type="text" class="form-control">
-                        </div>
-                      </div>
 
 						<div class="form-group">
 							<div class="col-sm-offset-2 col-sm-10">
 								<input type="submit" name="enviar" class="btn btn-sm btn-primary" value="Salvar" />
-								<a href="<?php echo site_url("menus")?>" class="btn btn-sm">Cancelar</a>
+								<a href="<?php echo site_url("convenios")?>" class="btn btn-sm">Cancelar</a>
 							</div>
 						</div>
 					</form>
@@ -76,6 +59,6 @@
 		</div>
 	</div>
 
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/modulos/conselhos/js.js"></script>
-<script type="text/javascript" src="<?php echo base_url(); ?>assets/modulos/conselhos/validate.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/modulos/convenios/js.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>assets/modulos/convenios/validate.js"></script>
 

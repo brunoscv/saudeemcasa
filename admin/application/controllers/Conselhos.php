@@ -112,7 +112,6 @@ class Conselhos extends MY_Controller {
 					$conselho = array();
 					$conselho['id']				= $this->input->post('id', true);
 					$conselho['nome_conselho']	= $this->input->post('nome_conselho', true);
-					$conselho['status']			= $this->input->post('status', true);
 					$conselho['updatedAt']		= date("Y-m-d");
 
 					$this->db->where("id",$id);
