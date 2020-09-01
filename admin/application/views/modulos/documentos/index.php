@@ -40,7 +40,10 @@
           	<div class="card">
 				<!-- Card header -->
 				<div class="card-header">
-					<h3 class="mb-0">Painel de Convenios</h3>
+					<h3 class="mb-0">Painel de Documentos</h3>
+				</div>
+				<div class="col-md-12">
+					<?php $this->load->view('layout/messages.php'); ?>
 				</div>
 				<div class="table-responsive py-4">
 					<table class="table table-flush" id="datatable-basic">

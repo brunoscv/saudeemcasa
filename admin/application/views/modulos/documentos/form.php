@@ -68,6 +68,8 @@
 							<div class="col-sm-10">
 								<input type="file" name="files[]" multiple required="required"/>
 							</div>
+							<small style="color:red"><i>Formatos de arquivos permitidos: JPG, PNG, PDF</i></small>
+							
 						</div>
 
 						<div class="form-group">

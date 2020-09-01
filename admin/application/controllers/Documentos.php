@@ -92,6 +92,9 @@ class Documentos extends MY_Controller {
 							$this->session->set_flashdata("msg_success", "Registro adicionado com sucesso!");
 							redirect('documentos/index');
 						}
+					} else {
+						$this->session->set_flashdata("msg_error", "Verifique o tamanho e formato do arquivo e tente novamente!");
+						redirect('documentos/index');
 					}
 				}
 			}
