@@ -7,13 +7,13 @@
 					<nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
 						<ol class="breadcrumb breadcrumb-links breadcrumb-dark">
 							<li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-							<li class="breadcrumb-item"><a href="#">Consultas</a></li>
-							<li class="breadcrumb-item active" aria-current="page">Nova Consulta</li>
+							<li class="breadcrumb-item"><a href="#">Planos de Cuidado</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Novo Plano de Cuidado</li>
 						</ol>
 					</nav>
 				</div>
 				<div class="col-lg-6 col-5 text-right">
-					<a href="<?= base_url()?>consultas" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Lista de Consultas</a>
+					<a href="<?= base_url()?>consultas" class="btn btn-sm btn-neutral"><i class="fa fa-list"></i> Lista</a>
 					<!-- <a href="#" class="btn btn-sm btn-neutral">Filters</a> -->
 				</div>
 			</div>
@@ -29,7 +29,7 @@
           	<div class="card">
 				<!-- Card header -->
 				<div class="card-header">
-					<h3 class="mb-0">Painel de Consultas</h3>
+					<h3 class="mb-0">Painel de Plano de Cuidado</h3>
 						<?php $this->load->view('layout/messages.php'); ?>
 					<!-- <p class="text-sm mb-0">
 					.

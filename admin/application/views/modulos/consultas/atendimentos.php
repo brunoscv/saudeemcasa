@@ -43,7 +43,7 @@
           	<div class="card">
 				<!-- Card header -->
 				<div class="card-header">
-					<h3 class="mb-0">Painel de Consultas</h3>
+					<h3 class="mb-0">Painel de Atendimentos</h3>
 					<!-- <p class="text-sm mb-0">
 					.
 					</p> -->

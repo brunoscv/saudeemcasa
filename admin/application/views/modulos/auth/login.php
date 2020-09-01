@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Saúde em Casa">
   <meta name="author" content="Saúde em Casa">
-  <title>Saúde em Casa Dashboard</title>
+  <title>Saúde em Casa</title>
   <!-- Favicon -->
-  <link rel="icon" href="<?php echo base_url(); ?>assets/img/brand/favicon.png" type="image/png">
+  <link rel="icon" href="<?php echo base_url(); ?>assets/img/theme/saude-logo.png" type="image/png">
   <!-- Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
   <!-- Icons -->
@@ -22,8 +22,8 @@
   <!-- Navbar -->
   <nav id="navbar-main" class="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
     <div class="container">
-      <a class="navbar-brand" href="<?php echo base_url(); ?>pages/dashboards/dashboard.html">
-        <img src="<?php echo base_url(); ?>assets/img/brand/white.png">
+      <a class="navbar-brand" href="<?php echo base_url(); ?>admin">
+        <img src="<?php echo base_url(); ?>assets/img/theme/saude-logo.png">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,8 +32,8 @@
         <div class="navbar-collapse-header">
           <div class="row">
             <div class="col-6 collapse-brand">
-              <a href="<?php echo base_url(); ?>pages/dashboards/dashboard.html">
-                <img src="<?php echo base_url(); ?>assets/img/brand/blue.png">
+              <a href="<?php echo base_url(); ?>admin">
+                <img src="<?php echo base_url(); ?>assets/img/theme/saude-logo.png">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -46,7 +46,7 @@
         </div>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a href="<?php echo base_url(); ?>pages/examples/lock.html" class="nav-link">
+            <a href="<?php echo base_url(); ?>admin" class="nav-link">
               <span class="nav-link-inner--text">Saúde em Casa</span>
             </a>
           </li>
@@ -54,21 +54,15 @@
         <hr class="d-lg-none" />
         <ul class="navbar-nav align-items-lg-center ml-lg-auto">
           <li class="nav-item">
-            <a class="nav-link nav-link-icon" href="https://www.facebook.com/" target="_blank" data-toggle="tooltip" data-original-title="Like us on Facebook">
+            <a class="nav-link nav-link-icon" href="https://www.facebook.com/saudeemcasapi" target="_blank" data-toggle="tooltip" data-original-title="Like us on Facebook">
               <i class="fab fa-facebook-square"></i>
               <span class="nav-link-inner--text d-lg-none">Facebook</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link nav-link-icon" href="https://www.instagram.com/" target="_blank" data-toggle="tooltip" data-original-title="Follow us on Instagram">
+            <a class="nav-link nav-link-icon" href="https://www.instagram.com/saudeemcasapi/" target="_blank" data-toggle="tooltip" data-original-title="Follow us on Instagram">
               <i class="fab fa-instagram"></i>
               <span class="nav-link-inner--text d-lg-none">Instagram</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link nav-link-icon" href="https://twitter.com/" target="_blank" data-toggle="tooltip" data-original-title="Follow us on Twitter">
-              <i class="fab fa-twitter-square"></i>
-              <span class="nav-link-inner--text d-lg-none">Twitter</span>
             </a>
           </li>
         </ul>
