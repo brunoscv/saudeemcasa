@@ -129,6 +129,55 @@ class Documentos extends MY_Controller {
 		}
 	}
 
+	public function editar_documentos() {
+		$id = $this->uri->segment(3);
+		$data = array();
+		if($this->input->post('enviar')){
+				$this->db->from("documentos AS d")->where("id", $id);
+				$this->db->delete("documentos");
+			if(isset($_FILES['files']['name']) && !empty($_FILES['files']['name'])){
+				$filesCount = count($_FILES['files']['name']);
+
+				for($i = 0; $i < $filesCount; $i++){
+					$_FILES['file']['name']     = $_FILES['files']['name'][$i];
+					$_FILES['file']['type']     = $_FILES['files']['type'][$i];
+					$_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+					$_FILES['file']['error']    = $_FILES['files']['error'][$i];
+					$_FILES['file']['size']     = $_FILES['files']['size'][$i];
+					
+					$config['upload_path'] = FCPATH . '/public/uploads/arquivos/' . date("Ymd");
+					if( !is_dir($config['upload_path']) ){
+						mkdir($config['upload_path'], 0777, TRUE);
+					}
+					$config['allowed_types'] 	= 'jpg|jpeg|png|pdf';
+					$config['max_size']			= 2*1024;
+					$config['encrypt_name'] 	= TRUE;
+					
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+					
+					if($this->upload->do_upload('file')){
+						$fileData = $this->upload->data();
+						$projectsFile[$i]['profissional_id']	= $this->input->post("profissional_id", TRUE);
+						$projectsFile[$i]['descricao']			= $this->input->post("descricao", TRUE);
+						$projectsFile[$i]['nome_arquivo']		= $fileData['file_name'];
+						$projectsFile[$i]['url'] 				= 'public/uploads/arquivos/' . date("Ymd") . '/';
+						$projectsFile[$i]['data_envio'] 		= formatar_data($this->input->post("data_envio", TRUE));
+						if(!empty($projectsFile)){
+							$this->db->insert("documentos", $projectsFile[$i]);
+
+							$this->session->set_flashdata("msg_success", "Registro adicionado com sucesso!");
+							redirect('documentos/index');
+						}
+					} else {
+						$this->session->set_flashdata("msg_error", "Verifique o tamanho e formato do arquivo e tente novamente!");
+						redirect('documentos/index');
+					}
+				}
+			}
+		}
+	}
+
 	public function delete(){
 		$id = $this->uri->segment(3);
 		
