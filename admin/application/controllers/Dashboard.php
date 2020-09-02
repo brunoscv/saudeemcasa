@@ -8,6 +8,11 @@ class Dashboard extends MY_Controller {
 		$this->_auth();
 		
 		$this->load->model("Dashboard_model");
+
+		//adiciona os dados do login para fazer as visualizacoes de informacoes
+		$this->data['user_id'] = $this->session->userdata('userdata')['id'];
+		$this->data['admin']   = $this->session->userdata('userdata')['principal'];
+		$this->data['tipo_id'] = $this->session->userdata('userdata')['tipo_id'];
 		
 		//adicione os campos da busca
 		$camposFiltros["pr.nome_prof"] = "Nome Cliente";
@@ -24,6 +29,45 @@ class Dashboard extends MY_Controller {
 			->get()->row();
 		$quantidadeMenus = $countAtendimentos->quantidade;
 		$this->data['qtd_atd'] = $quantidadeMenus;
+
+		$countProfissionais = $this->db
+			->select("count(id) AS quantidade")
+			->from("profissionais AS p")
+			->where("status", 1)
+			->get()->row();
+		$quantidadeProfissionais = $countProfissionais->quantidade;
+		$this->data['qtd_prof'] = $quantidadeProfissionais;
+
+		$countPacientes = $this->db
+			->select("count(id) AS quantidade")
+			->from("pacientes AS p")
+			->where("status", 1)
+			->get()->row();
+		$quantidadePacientes = $countPacientes->quantidade;
+		$this->data['qtd_pac'] = $quantidadePacientes;
+
+		$countEspecialidades = $this->db
+			->select("count(id) AS quantidade")
+			->from("especialidades AS e")
+			->where("status", 1)
+			->get()->row();
+		$quantidadeEspecialidades = $countEspecialidades->quantidade;
+		$this->data['qtd_espec'] = $quantidadeEspecialidades;
+
+		$resultProfissionais = $this->db
+									->select("p.*, e.nome_espec, est.uf, c.nome_conselho")
+									->from("profissionais AS p")	
+									->join("especialidades AS e", "p.especialidades_id = e.id")
+									->join("conselhos AS c", "p.conselhos_id = c.id")
+									->join("estados AS est", "p.estados_id = est.id")
+									->order_by("p.nome_prof", "ASC")
+									//->limit($perPage,$offset)
+									->get();
+		
+		$this->data['listaProfissionais'] = $resultProfissionais->result();
+
+		$displayed = ($this->data['tipo_id'] != 1) ? $displayed = "style='display:none;'" : $displayed = "";
+		$this->data['displayed'] = $displayed;
 
 		//arShow($this->data['qtd_atd']); exit;
 		
