@@ -122,24 +122,25 @@ class Financeiro extends MY_Controller {
 	public function delete(){
 		$id = $this->uri->segment(3);
 		
-		$conselho = $this->db
-						->from("conselhos AS c")
-						->where("id", $id)->get()->row();
-		$this->data['item'] = $conselho;
+		$financeiro = $this->db
+						->select("f.id, f.valor_nota, p.nome_prof")
+						->from("financeiro AS f")
+						->join("profissionais AS p", "p.id = f.profissional_id", "left")
+						->where("f.id", $id)->get()->row();
+		$this->data['item'] = $financeiro;
 		
-		if( !$conselho ){
+		if( !$financeiro ){
 			$this->session->set_flashdata("msg_error", "Registro não encontrado!");
-			redirect('conselhos/index');
+			redirect('financeiro/index');
 		} else {
-			$this->data['item'] = $conselho;
+			$this->data['item'] = $financeiro;
 			
 			if( $this->input->post("enviar") ){
-				
-				$this->db->where("id", $conselho->id);
-				$this->db->delete("conselhos");
+				$this->db->from("financeiro AS f")->where("id", $id);
+				$this->db->delete("financeiro");
 
-				$this->session->set_flashdata("msg_success", "Registro deletado com sucesso!");
-				redirect('conselhos/index');
+				$this->data['msg_success'] = $this->session->set_flashdata("msg_success", "Registro deletado com sucesso!");
+				redirect('financeiro/index');
 			}
 		}
 	}

@@ -39,11 +39,11 @@
 				<form id="form_convenios" class="form-horizontal" method="post" action="<?php echo site_url();?>documentos/salvar_documentos" enctype="multipart/form-data">
 						<input type="hidden" id="id" name="id" value="<?php echo set_value("id", @$item->id); ?>" />
 						<div class="form-group">
-							<label class="col-sm-2 control-label" for="profissionais_id">Profissional</label>
+							<label class="col-sm-2 control-label" for="profissional_id">Profissional</label>
 							<div class="col-sm-10">
-								<?php echo form_dropdown('profissionais_id', $listaProfissionais, set_value('profissionais_id', @$item->profissionais_id), 
+								<?php echo form_dropdown('profissional_id', $listaProfissionais, set_value('profissional_id', @$item->profissional_id), 
 								'data-size="7" data-live-search="true" class="form-control" id="profissionais"required=""'); ?>
-								<?php echo form_error('profissionais_id'); ?>
+								<?php echo form_error('profissional_id'); ?>
 							</div>
 						</div>
 
@@ -58,7 +58,12 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label" for="data_envio">Data de Referência</label>
 							<div class="col-sm-10">
-								<input name="data_envio" type="text" id="data_envio" required="" class="form-control" value="<?php echo set_value("data_envio", @$item->data_envio) ?>" />
+							    <?php if (!@$item->data_envio) { ?>
+									<input name="data_envio" type="text" id="data_envio" required="" class="form-control" value="<?php echo set_value("data_envio", @$item->data_envio) ?>" />
+								<?php } else { ?>
+									<input name="data_envio" type="text" id="data_envio" required="" class="form-control" value="<?php echo set_value("data_envio", date("d/m/Y", strtotime(@$item->data_envio))) ?>" />
+								<?php } ?>
+								
 							<?php echo form_error('data_envio'); ?>
 							</div>
 						</div>

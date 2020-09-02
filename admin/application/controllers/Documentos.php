@@ -54,6 +54,34 @@ class Documentos extends MY_Controller {
 		}
 		//fim Campos relacionados
 	}
+
+	public function editar(){
+		$id = $this->uri->segment(3);
+
+		$documento = $this->db
+						->from("documentos AS d")
+						->where("id", $id)->get()->row();
+
+		//Campos relacionados
+		//caso seja necessario adicione os relacionamento aqui
+		if($this->data['admin'] != 1) {
+			$profissionais = $this->Profissionais_model->getProfissionalById($this->data['user_id']);
+		} else {
+			$profissionais = $this->Profissionais_model->getProfissionais();
+		}
+		$this->data['listaProfissionais'] = array();
+		foreach ($profissionais as $profissionais) {
+			$this->data['listaProfissionais'][$profissionais->id] = $profissionais->nome_prof;
+		}
+		//fim Campos relacionados
+
+		if(!$documento){
+			$this->session->set_flashdata("msg_error", "Registro não encontrado!");
+			redirect('documentos/index');
+		} else {
+			$this->data['item'] = $documento;
+		}
+	}
 	
 	public function salvar_documentos() {
 		$data = array();
@@ -81,7 +109,7 @@ class Documentos extends MY_Controller {
 					
 					if($this->upload->do_upload('file')){
 						$fileData = $this->upload->data();
-						$projectsFile[$i]['profissional_id']	= $this->input->post("profissionais_id", TRUE);
+						$projectsFile[$i]['profissional_id']	= $this->input->post("profissional_id", TRUE);
 						$projectsFile[$i]['descricao']			= $this->input->post("descricao", TRUE);
 						$projectsFile[$i]['nome_arquivo']		= $fileData['file_name'];
 						$projectsFile[$i]['url'] 				= 'public/uploads/arquivos/' . date("Ymd") . '/';
@@ -97,6 +125,32 @@ class Documentos extends MY_Controller {
 						redirect('documentos/index');
 					}
 				}
+			}
+		}
+	}
+
+	public function delete(){
+		$id = $this->uri->segment(3);
+		
+		$documento = $this->db
+						->select("d.id, d.descricao, p.nome_prof")
+						->from("documentos AS d")
+						->join("profissionais AS p", "p.id = d.profissional_id", "left")
+						->where("d.id", $id)->get()->row();
+		$this->data['item'] = $documento;
+		
+		if( !$documento ){
+			$this->session->set_flashdata("msg_error", "Registro não encontrado!");
+			redirect('documentos/index');
+		} else {
+			$this->data['item'] = $documento;
+			
+			if( $this->input->post("enviar") ){
+				$this->db->from("documentos AS d")->where("id", $id);
+				$this->db->delete("documentos");
+
+				$this->data['msg_success'] = $this->session->set_flashdata("msg_success", "Registro deletado com sucesso!");
+				redirect('documentos/index');
 			}
 		}
 	}

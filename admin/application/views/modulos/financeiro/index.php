@@ -46,6 +46,9 @@
 					.
 					</p> -->
 				</div>
+				<div class="col-md-12">
+					<?php $this->load->view('layout/messages.php'); ?>
+				</div>
 				<div class="table-responsive py-4">
 					<table class="table table-flush" id="datatable-basic">
 					<thead>
@@ -57,7 +60,7 @@
 									<th>Valor</th>
 									<th>Status</th>
 									<th>Criado</th>
-									<th class="td-actions"></th>
+									<th class="td-actions" <?= $displayed ?>></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -71,7 +74,9 @@
 									<td><?php echo number_format($item->valor_nota, 2, ',', '.'); ?></td>
 									<td><?php echo ($item->status == 1 ? '<span class="label label-success"> Ativo </span>' : '<span class="label label-danger"> Inativo </span>') ?></td>
 									<td><?php echo date("d/m/Y", strtotime($item->createdAt)); ?></td>
-									<td><a href="<?php echo site_url("financeiro/editar/".$item->id); ?>" class="mr-2"><i class="fa fa-pencil text-info font-16"></i></a></td>
+									<td class="td-actions" <?= $displayed ?>>
+									<a class="" href="<?php echo site_url("financeiro/delete/". $item->id); ?>"><i class='fa fa-trash'></i></a>
+									</td>
 								</tr>
 								<?php endforeach; ?>
 							</tbody>

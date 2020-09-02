@@ -54,6 +54,7 @@
 									<th>Nome Doc.</th>
 									<th>Data Envio.</th>
 									<th>Download</th>
+									<th class="actions"></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -64,6 +65,10 @@
 									<td><?php echo $item->descricao; ?></td>
 									<td><?php echo date("d/m/Y", strtotime($item->data_envio)); ?></td>
 									<td><a href="<?php echo base_url() . $item->url . $item->nome_arquivo; ?>" class="mr-2" target="_blank"><i class="fa fa-download text-info font-16"></i></a></td>
+									<td class="td-actions">
+									<a class="" href="<?php echo site_url("documentos/editar/". $item->id); ?>"><i class='fas fa-edit'></i></a>
+									<a class="" href="<?php echo site_url("documentos/delete/". $item->id); ?>" <?= $displayed ?>><i class='fa fa-trash'></i></a>
+									</td>
 								</tr>
 								<?php endforeach; ?>
 							</tbody>
