@@ -22,6 +22,10 @@ class Dashboard extends MY_Controller {
 	}
 
 	public function index(){
+
+		if ($this->data['tipo_id'] != 1) {
+			redirect('consultas/index');
+		}
 		$countAtendimentos = $this->db
 			->select("count(id) AS quantidade")
 			->from("atendimentos_sessoes AS as")
