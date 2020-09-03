@@ -113,47 +113,29 @@ class Usuarios extends MY_Controller {
 				$this->data['msg_error'] = validation_errors("<p>","</p>");
 			} else {
 				$usuario = array();
-				$usuario['usuario']   = strtolower($this->input->post("usuario",TRUE));
-				//$usuario['nome'] 	  = $this->input->post("nome",TRUE);
-				$usuario['email'] 	  = $this->input->post("email",TRUE);
-				$usuario['senha'] 	  = $this->encryption->encrypt($this->input->post("senha",TRUE));
-				$usuario['principal'] = ($this->input->post("principal")) ? $this->input->post("principal") : "0";
-				$usuario['createdAt'] = date("Y-m-d H:i:s");
-				
+				$usuario['usuario']    = strtolower($this->input->post("usuario",TRUE));
+				$usuario['email'] 	   = $this->input->post("email",TRUE);
+				$usuario['senha'] 	   = $this->encryption->encrypt($this->input->post("senha",TRUE));
+				$usuario['principal']  = ($this->input->post("principal")) ? $this->input->post("principal") : "0";
+				$usuario['createdAt']  = date("Y-m-d H:i:s");	
 				$usuario["tipo_id"]    = $this->input->post("tipo_id",TRUE);
 				$usuario["usuario_id"] = $this->input->post("usuario_id",TRUE);
-
-				// switch ($usuario["tipo_id"]) {
-				// 	case 1:
-				// 		$usuario["usuario"] = "Saude em Casa";
-				// 	break;					
-				// 	default:
-				// 		$usuarios = $this->db->select("nome_prof")->from("profissionais")->where("id", $usuario["usuario_id"])->get()->result();
-				// 		$usuario["nome"] = $usuarios[0]->nome_prof;
-				// 	break;
-				// }
-
-				// arShow($usuario);exit;
 				
 				$this->db->insert("usuarios", $usuario);
+				$usuario_id = $this->db->insert_id(); //pega o ultimo id inserido no BD
 				if( $this->input->post("perfis") ){
-					$usuario['id'] = $this->db->insert_id(); //pega o ultimo id inserido no BD
-					
 					$perfis = $this->input->post("perfis");
 					foreach($perfis as $perfil){
 						$usuario_perfil = array();
-						$usuario_perfil['usuarios_id']  = $usuario['id'];
+						$usuario_perfil['usuarios_id']  = $usuario_id;
 						$usuario_perfil['perfis_id'] = $perfil; 
 						$this->db->insert("usuarios_perfis", $usuario_perfil);
 					}
-
 				}
-				
 				$this->session->set_flashdata("msg_success", "Usuário adicionado com sucesso!");
 				redirect('usuarios/index');
 			}
-		}
-	
+		}	
 	}
 	
 	public function editar(){
