@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 28, 2020 at 02:54 AM
+-- Generation Time: Sep 03, 2020 at 06:59 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `atendimentos` (
   `createdAt` date DEFAULT NULL,
   `updatedAt` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `atendimentos`
@@ -56,9 +56,6 @@ INSERT INTO `atendimentos` (`id`, `consultas_id`, `qtd_atendimentos`, `freq_aten
 (7, 5, 12, 2, '2020-03-05', '2020-03-26', '2020-03-05', 1, '2020-03-05', NULL),
 (8, 6, 10, 5, '2020-05-12', '2020-06-12', '2020-06-16', 1, '2020-06-16', NULL),
 (9, 7, 10, 3, '2020-05-12', '2020-06-12', '2020-06-16', 1, '2020-06-16', NULL),
-(14, 2, 10, 1, '2020-08-25', '2020-09-25', '2020-06-16', 1, '2020-06-16', NULL),
-(15, 2, 10, 1, '2020-08-25', '2020-09-25', '2020-06-16', 1, '2020-06-16', NULL),
-(16, 2, 10, 1, '2020-08-25', '2020-09-25', '2020-06-16', 1, '2020-06-16', NULL),
 (17, 1, 12, 2, '2020-11-11', '2020-11-12', '2020-06-16', 1, '2020-06-16', NULL),
 (18, 8, 5, 5, '2020-05-12', '2020-06-13', '2020-06-16', 1, '2020-06-16', NULL),
 (19, 8, 5, 5, '2020-07-23', '2020-08-24', '2020-06-16', 1, '2020-06-16', NULL),
@@ -69,7 +66,10 @@ INSERT INTO `atendimentos` (`id`, `consultas_id`, `qtd_atendimentos`, `freq_aten
 (24, 11, 12, 1, NULL, NULL, '2020-06-17', 1, '2020-06-17', NULL),
 (25, 12, 10, 3, '2020-08-03', '2020-09-03', '2020-08-03', 1, '2020-08-03', NULL),
 (26, 13, 12, 3, '2020-08-03', '2020-09-03', '2020-08-03', 1, '2020-08-03', NULL),
-(27, 14, 5, 2, '2020-05-05', '2020-06-05', '2020-08-27', 1, '2020-08-27', NULL);
+(27, 14, 5, 2, '2020-05-05', '2020-06-05', '2020-08-27', 1, '2020-08-27', NULL),
+(33, 15, 10, 2, '2020-09-01', '2020-10-01', '2020-09-01', 1, '2020-09-01', NULL),
+(37, 16, 5, 1, '2020-09-01', '2020-10-01', '2020-09-01', 1, '2020-09-01', NULL),
+(38, 2, 5, 1, '2020-08-25', '2020-09-25', '2020-09-01', 1, '2020-09-01', NULL);
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `atendimentos_sessoes` (
   `createdAt` date DEFAULT NULL,
   `updatedAt` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=432 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=522 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `atendimentos_sessoes`
@@ -138,16 +138,6 @@ INSERT INTO `atendimentos_sessoes` (`id`, `consultas_id`, `atendimentos_id`, `da
 (322, 7, 9, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
 (323, 7, 9, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
 (324, 7, 9, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
-(345, 2, 16, '2020-06-16', '2020-07-30 00:00:00', 1, 1, '2020-06-16', '2020-07-30'),
-(346, 2, 16, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
-(347, 2, 16, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
-(348, 2, 16, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
-(349, 2, 16, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
-(350, 2, 16, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
-(351, 2, 16, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
-(352, 2, 16, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
-(353, 2, 16, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
-(354, 2, 16, '2020-06-16', NULL, 0, 1, '2020-06-16', NULL),
 (355, 1, 17, '2020-06-16', '2020-06-16 15:23:00', 1, 1, '2020-06-16', '2020-06-16'),
 (356, 1, 17, '2020-06-16', '2020-06-16 17:00:00', 1, 1, '2020-06-16', '2020-06-16'),
 (357, 1, 17, '2020-06-16', '2020-06-16 18:00:00', 1, 1, '2020-06-16', '2020-06-16'),
@@ -224,7 +214,27 @@ INSERT INTO `atendimentos_sessoes` (`id`, `consultas_id`, `atendimentos_id`, `da
 (428, 14, 27, '2020-08-27', NULL, 0, 1, '2020-08-27', NULL),
 (429, 14, 27, '2020-08-27', NULL, 0, 1, '2020-08-27', NULL),
 (430, 14, 27, '2020-08-27', NULL, 0, 1, '2020-08-27', NULL),
-(431, 14, 27, '2020-08-27', NULL, 0, 1, '2020-08-27', NULL);
+(431, 14, 27, '2020-08-27', NULL, 0, 1, '2020-08-27', NULL),
+(472, 15, 33, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(473, 15, 33, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(474, 15, 33, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(475, 15, 33, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(476, 15, 33, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(477, 15, 33, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(478, 15, 33, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(479, 15, 33, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(480, 15, 33, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(481, 15, 33, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(512, 16, 37, '2020-09-01', '2020-09-01 17:18:00', 1, 1, '2020-09-01', '2020-09-01'),
+(513, 16, 37, '2020-09-01', '2020-09-01 17:18:00', 1, 1, '2020-09-01', '2020-09-01'),
+(514, 16, 37, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(515, 16, 37, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(516, 16, 37, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(517, 2, 38, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(518, 2, 38, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(519, 2, 38, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(520, 2, 38, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL),
+(521, 2, 38, '2020-09-01', NULL, 0, 1, '2020-09-01', NULL);
 
 -- --------------------------------------------------------
 
@@ -4136,37 +4146,18 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`id`, `ip_address`, `timestamp`, `data`) VALUES
-('0o3cngjark8lk20mhnl6tvb90dd2k900', '::1', 1598562532, '__ci_last_regenerate|i:1598562532;userdata|a:8:{s:2:\"id\";s:2:\"44\";s:4:\"nome\";s:14:\"Bruno Carvalho\";s:7:\"usuario\";s:8:\"brunoscv\";s:7:\"tipo_id\";N;s:10:\"usuario_id\";N;s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
-('1q443dgk54hf7otns7o037h4snna3mu9', '::1', 1598578276, '__ci_last_regenerate|i:1598578276;userdata|a:7:{s:2:\"id\";s:1:\"2\";s:7:\"usuario\";s:11:\"anacarolina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"2\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('3o04mjpeoadgv3dbf66cpg6lutmjeu9h', '::1', 1598563075, '__ci_last_regenerate|i:1598563075;userdata|a:8:{s:2:\"id\";s:2:\"44\";s:4:\"nome\";s:14:\"Bruno Carvalho\";s:7:\"usuario\";s:8:\"brunoscv\";s:7:\"tipo_id\";N;s:10:\"usuario_id\";N;s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}msg_success|s:41:\"Usuário amararegina editado com sucesso!\";__ci_vars|a:1:{s:11:\"msg_success\";s:3:\"old\";}'),
-('5u2uetfggcvtospf11rao8uhntuvs4dt', '::1', 1598567625, '__ci_last_regenerate|i:1598567625;userdata|a:7:{s:2:\"id\";s:1:\"1\";s:7:\"usuario\";s:11:\"amararegina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"1\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('6e0ohs7m7375oglc308a9fqeq40jgm08', '::1', 1598567932, '__ci_last_regenerate|i:1598567932;userdata|a:7:{s:2:\"id\";s:1:\"1\";s:7:\"usuario\";s:11:\"amararegina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"1\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('7qaeqpnk37dog6aitj2on1k8p5s54lhr', '::1', 1598564605, '__ci_last_regenerate|i:1598564605;userdata|a:8:{s:2:\"id\";s:2:\"44\";s:4:\"nome\";s:14:\"Bruno Carvalho\";s:7:\"usuario\";s:8:\"brunoscv\";s:7:\"tipo_id\";N;s:10:\"usuario_id\";N;s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}msg_success|s:38:\"Usuário anamoema editado com sucesso!\";__ci_vars|a:1:{s:11:\"msg_success\";s:3:\"old\";}'),
-('98sr17dberkr613qrgj53fkvnkug51gn', '::1', 1598566382, '__ci_last_regenerate|i:1598566382;userdata|a:7:{s:2:\"id\";s:1:\"1\";s:7:\"usuario\";s:11:\"amararegina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"1\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('ascdalaukjq5ekb6kq7moqg2itt9o8fv', '::1', 1598580747, '__ci_last_regenerate|i:1598580747;userdata|a:7:{s:2:\"id\";s:2:\"42\";s:7:\"usuario\";s:8:\"brunoscv\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"42\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
-('bbfbn5f6jho1p3o0f0jh7misv150k3m5', '::1', 1598581921, '__ci_last_regenerate|i:1598581916;'),
-('bcpuk1ritc49otmvqfnnoqamrcf3d7to', '::1', 1598576601, '__ci_last_regenerate|i:1598576601;userdata|a:7:{s:2:\"id\";s:1:\"2\";s:7:\"usuario\";s:11:\"anacarolina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"2\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}msg_success|s:32:\"Registro adicionado com sucesso!\";__ci_vars|a:1:{s:11:\"msg_success\";s:3:\"old\";}'),
-('bnhe5on6pkvrr6t7116atn2p2k9qtbr2', '::1', 1598582028, '__ci_last_regenerate|i:1598582028;'),
-('bqfusd14dg5tacl1rpj8t1u2fv0dp9g9', '::1', 1598580442, '__ci_last_regenerate|i:1598580442;userdata|a:7:{s:2:\"id\";s:2:\"42\";s:7:\"usuario\";s:8:\"brunoscv\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"42\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}msg_success|s:32:\"Registro adicionado com sucesso!\";__ci_vars|a:1:{s:11:\"msg_success\";s:3:\"old\";}'),
-('bqs4627omtrj2pv4qpgilab2jhhdjnkc', '::1', 1598565406, '__ci_last_regenerate|i:1598565406;'),
-('c9ht7sc6jhrefj1q5n798q8aklhbduk3', '::1', 1598581958, '__ci_last_regenerate|i:1598581958;userdata|a:7:{s:2:\"id\";s:1:\"1\";s:7:\"usuario\";s:11:\"amararegina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"1\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}msg_success|s:32:\"Registro adicionado com sucesso!\";__ci_vars|a:1:{s:11:\"msg_success\";s:3:\"old\";}'),
-('cribu59hucf2mf3g1l84oil0akjo476q', '::1', 1598576130, '__ci_last_regenerate|i:1598576130;userdata|a:7:{s:2:\"id\";s:1:\"2\";s:7:\"usuario\";s:11:\"anacarolina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"2\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('diffa43nu0j4q5cvmc4d9bfni5d2od29', '::1', 1598566890, '__ci_last_regenerate|i:1598566890;userdata|a:7:{s:2:\"id\";s:2:\"42\";s:7:\"usuario\";s:8:\"brunoscv\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"42\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
-('dvc26ibmrv2m7tok51c0vimciuv0eu20', '::1', 1598562125, '__ci_last_regenerate|i:1598562125;userdata|a:8:{s:2:\"id\";s:2:\"44\";s:4:\"nome\";s:14:\"Bruno Carvalho\";s:7:\"usuario\";s:8:\"brunoscv\";s:7:\"tipo_id\";N;s:10:\"usuario_id\";N;s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
-('f2bbvrsub5jnageplrtm17pqsgsvls13', '::1', 1598565427, '__ci_last_regenerate|i:1598565427;'),
-('fbcde9d4doqoq63o1harvsns5aq61epq', '::1', 1598574711, '__ci_last_regenerate|i:1598574711;userdata|a:7:{s:2:\"id\";s:1:\"1\";s:7:\"usuario\";s:11:\"amararegina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"1\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('frnuf0hmqoohoqc2ebgkpgnl6efgv5a8', '::1', 1598577435, '__ci_last_regenerate|i:1598577435;userdata|a:7:{s:2:\"id\";s:1:\"2\";s:7:\"usuario\";s:11:\"anacarolina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"2\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('i22dojdg7dv2t8m6qf8d0rg632dvdngk', '::1', 1598577787, '__ci_last_regenerate|i:1598577787;userdata|a:7:{s:2:\"id\";s:1:\"2\";s:7:\"usuario\";s:11:\"anacarolina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"2\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('jadko2u6v6gker5f173imjo7i7lshnrf', '::1', 1598579795, '__ci_last_regenerate|i:1598579795;userdata|a:7:{s:2:\"id\";s:2:\"42\";s:7:\"usuario\";s:8:\"brunoscv\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"42\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
-('kolaphiu1lib6k8qkn82bov65hn50mrj', '::1', 1598581167, '__ci_last_regenerate|i:1598581167;userdata|a:7:{s:2:\"id\";s:1:\"1\";s:7:\"usuario\";s:11:\"amararegina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"1\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('mcmq3tb7gj28i8qnpjlq6piljges8eas', '::1', 1598581846, '__ci_last_regenerate|i:1598581846;userdata|a:7:{s:2:\"id\";s:2:\"42\";s:7:\"usuario\";s:8:\"brunoscv\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"42\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
-('nhe218l4hksmfji4ik61hsek9ihgp93q', '::1', 1598575100, '__ci_last_regenerate|i:1598575100;userdata|a:7:{s:2:\"id\";s:1:\"1\";s:7:\"usuario\";s:11:\"amararegina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"1\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('nu8n0kc5o9k6d8emeq0rcu0q27qvo3id', '::1', 1598574410, '__ci_last_regenerate|i:1598574410;'),
-('o98lu09begbf3gqtrgh65u4on89gv1t3', '::1', 1598565732, '__ci_last_regenerate|i:1598565732;userdata|a:7:{s:2:\"id\";s:1:\"1\";s:7:\"usuario\";s:11:\"amararegina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"1\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('omvamrje22sg3k0aqcpe8o50pddic3bi', '::1', 1598580141, '__ci_last_regenerate|i:1598580141;userdata|a:7:{s:2:\"id\";s:2:\"42\";s:7:\"usuario\";s:8:\"brunoscv\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"42\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
-('qpf7c91otbk0tfcj7lil9dc7vjk0q4p4', '::1', 1598575701, '__ci_last_regenerate|i:1598575701;userdata|a:7:{s:2:\"id\";s:2:\"33\";s:7:\"usuario\";s:13:\"pedrohenrique\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"33\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
-('r36ssdtmd6vcq9fcj0f9l87rhtc14nij', '::1', 1598566069, '__ci_last_regenerate|i:1598566069;userdata|a:7:{s:2:\"id\";s:1:\"1\";s:7:\"usuario\";s:11:\"amararegina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"1\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}'),
-('tpljvikqnkj4khcr99h2jpnivao4l1tp', '::1', 1598578654, '__ci_last_regenerate|i:1598578654;userdata|a:7:{s:2:\"id\";s:1:\"2\";s:7:\"usuario\";s:11:\"anacarolina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"2\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}');
+('27v5897u79sgmgp3unu13t2akn2nbelb', '::1', 1599157583, '__ci_last_regenerate|i:1599157583;'),
+('6jhs62latusovofcoc252pg27in8qe9e', '::1', 1599012197, '__ci_last_regenerate|i:1599012197;userdata|a:7:{s:2:\"id\";s:2:\"33\";s:7:\"usuario\";s:13:\"pedrohenrique\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"33\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
+('9av47v1l7jsp73fvhl2a6tip89sp71kn', '::1', 1599159386, '__ci_last_regenerate|i:1599159384;userdata|a:7:{s:2:\"id\";s:2:\"33\";s:7:\"usuario\";s:13:\"pedrohenrique\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"33\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
+('c23qvdlcie6f8gjdpr1lqifkpvlksfas', '::1', 1599157974, '__ci_last_regenerate|i:1599157974;userdata|a:7:{s:2:\"id\";s:2:\"33\";s:7:\"usuario\";s:13:\"pedrohenrique\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"33\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
+('djgpv4j03j3g1hv9mki83ibg883nolf4', '::1', 1599015066, '__ci_last_regenerate|i:1599015066;'),
+('jbpqp1s98ebefq2e5bbd79ur668dmh7h', '::1', 1599014592, '__ci_last_regenerate|i:1599014592;'),
+('jpqdr60m6qkobipjommmlj2akobg7d9a', '::1', 1599012808, '__ci_last_regenerate|i:1599012808;userdata|a:7:{s:2:\"id\";s:2:\"33\";s:7:\"usuario\";s:13:\"pedrohenrique\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"33\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
+('jtaod40a12cc2k22c0jkhtu3u3tmfl6v', '::1', 1599011549, '__ci_last_regenerate|i:1599011549;userdata|a:7:{s:2:\"id\";s:2:\"33\";s:7:\"usuario\";s:13:\"pedrohenrique\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"33\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}msg_success|s:32:\"Registro adicionado com sucesso!\";__ci_vars|a:1:{s:11:\"msg_success\";s:3:\"old\";}'),
+('pbjga4mfbk83k76ct8o7vj4i4th586bo', '::1', 1599159141, '__ci_last_regenerate|i:1599159141;userdata|a:7:{s:2:\"id\";s:2:\"33\";s:7:\"usuario\";s:13:\"pedrohenrique\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"33\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
+('rmaqm6sec5th0j9q84jof53dkhq50sfk', '::1', 1599158335, '__ci_last_regenerate|i:1599158335;userdata|a:7:{s:2:\"id\";s:2:\"33\";s:7:\"usuario\";s:13:\"pedrohenrique\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"33\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
+('udq9ehlrcrfal54dus0tlvebeslh25eo', '::1', 1599015066, '__ci_last_regenerate|i:1599015066;userdata|a:7:{s:2:\"id\";s:2:\"33\";s:7:\"usuario\";s:13:\"pedrohenrique\";s:7:\"tipo_id\";s:1:\"1\";s:10:\"usuario_id\";s:2:\"33\";s:6:\"perfis\";a:1:{i:0;s:1:\"4\";}s:9:\"principal\";s:1:\"1\";s:11:\"clientes_id\";N;}'),
+('vh0340gmcmqbuvu54r6th02cq8t7mejt', '::1', 1599013244, '__ci_last_regenerate|i:1599013244;userdata|a:7:{s:2:\"id\";s:1:\"1\";s:7:\"usuario\";s:11:\"amararegina\";s:7:\"tipo_id\";s:1:\"2\";s:10:\"usuario_id\";s:1:\"1\";s:6:\"perfis\";a:1:{i:0;s:1:\"5\";}s:9:\"principal\";s:1:\"0\";s:11:\"clientes_id\";N;}');
 
 -- --------------------------------------------------------
 
@@ -4237,14 +4228,14 @@ CREATE TABLE IF NOT EXISTS `consultas` (
   `createdAt` date DEFAULT NULL,
   `updatedAt` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `consultas`
 --
 
 INSERT INTO `consultas` (`id`, `pacientes_id`, `profissionais_id`, `status`, `createdAt`, `updatedAt`) VALUES
-(2, 6, 14, 1, NULL, '2020-06-16'),
+(2, 6, 14, 1, NULL, '2020-09-01'),
 (3, 116, 40, 1, '2019-05-16', '2020-06-16'),
 (4, 40, 77, 1, '2019-10-02', NULL),
 (5, 7, 4, 1, '2020-03-05', NULL),
@@ -4255,7 +4246,9 @@ INSERT INTO `consultas` (`id`, `pacientes_id`, `profissionais_id`, `status`, `cr
 (11, 1, 2, 1, '2020-06-17', NULL),
 (12, 1, 1, 1, '2020-08-03', NULL),
 (13, 4, 8, 1, '2020-08-03', NULL),
-(14, 45, 8, 1, '2020-08-27', NULL);
+(14, 45, 8, 1, '2020-08-27', NULL),
+(15, 6, 14, 1, '2020-09-01', '2020-09-01'),
+(16, 6, 14, 1, '2020-09-01', '2020-09-01');
 
 -- --------------------------------------------------------
 
@@ -4310,25 +4303,22 @@ CREATE TABLE IF NOT EXISTS `documentos` (
   `url` varchar(180) NOT NULL,
   `data_envio` date NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `documentos`
 --
 
 INSERT INTO `documentos` (`id`, `profissional_id`, `descricao`, `nome_arquivo`, `url`, `data_envio`) VALUES
-(1, 2, 'Documentos', 'ca310363a3e44f5dfd90abd3a32dceff.png', 'public/uploads/arquivos/20200228/', '2020-02-27'),
-(2, 4, 'Nota de Outubro', '2d745eb2984e97f1f2c691b3a02448b5.jpg', 'public/uploads/arquivos/20200228/', '2020-02-28'),
-(3, 3, 'Nota de Setembro', '3025989afeabefae1861fc36e9641b63.png', 'public/uploads/arquivos/20200228/', '2020-02-28'),
-(4, 12, 'Teste de nota', '6305ba15b2201289f56c6274aa9ee6ea.pdf', 'public/uploads/arquivos/20200228/', '2020-01-14'),
-(5, 13, 'Teste com duas notas', '7273daa501645fb682887c8e8ac62ab3.pdf', 'public/uploads/arquivos/20200228/', '2020-02-20'),
-(6, 12, 'testeeeees', '747e763453949b81af7230dde936c96a.pdf', 'public/uploads/arquivos/20200228/', '2020-02-27'),
-(7, 3, 'Pagamento', '2aa4a98d01fcdb9e31a04d18eda2ec37.png', 'public/uploads/arquivos/20200616/', '2020-10-22'),
-(8, 5, 'Test', '6c7b2c0dc83fd1755127f8cef728de95.png', 'public/uploads/arquivos/20200616/', '2020-10-25'),
-(9, 8, 'teste', '8b8eb01d31276a858e4a3862a3e0caab.png', 'public/uploads/arquivos/20200616/', '2020-02-25'),
 (10, 5, 'Financeiro', '174d258cbaa9c0109bd94fb29a976903.jpg', 'public/uploads/arquivos/20200827/', '1988-10-28'),
 (11, 2, 'Teste teste', 'cb7d4276be8772704d3fba125df8d3e5.jpg', 'public/uploads/arquivos/20200827/', '2020-05-20'),
-(12, 1, 'Test', '9cc403b202799e8b1db38b5cfa76d9c3.jpg', 'public/uploads/arquivos/20200827/', '2020-04-05');
+(12, 1, 'Test', '9cc403b202799e8b1db38b5cfa76d9c3.jpg', 'public/uploads/arquivos/20200827/', '2020-04-05'),
+(14, 7, '2510', '41e174a58a174e3581004740876a647a.png', 'public/uploads/arquivos/20200901/', '1988-10-25'),
+(15, 6, '23410', '0bda48505b60fdc7201f0445dac3ec24.png', 'public/uploads/arquivos/20200901/', '1988-10-23'),
+(16, 6, '23410', 'b080b773ff04f5a5fbee547b66f60244.png', 'public/uploads/arquivos/20200901/', '1988-10-23'),
+(17, 6, '23410', 'b57eead7270306251ce22d164bcfb17f.png', 'public/uploads/arquivos/20200901/', '1988-10-23'),
+(19, 8, 'teste', '6d00ef8b8355b64aeae11460e591993d.png', 'public/uploads/arquivos/20200901/', '2020-02-25'),
+(21, 1, 'Perfis de Acesso', 'd9184748787ff48df7fcdbbe9ab9a984.png', 'public/uploads/arquivos/20200901/', '2020-05-08');
 
 -- --------------------------------------------------------
 
@@ -4534,15 +4524,9 @@ CREATE TABLE IF NOT EXISTS `financeiro` (
 --
 
 INSERT INTO `financeiro` (`id`, `profissional_id`, `data_nota`, `qtd_atendimentos`, `valor_nota`, `status`, `createdAt`, `updatedAt`) VALUES
-(1, 4, '2020-03-05 00:00:00', 10, '450.00', 1, '2020-03-05', NULL),
 (2, 58, '2020-03-05 00:00:00', 20, '400.00', 1, '2020-03-05', NULL),
 (3, 52, '2020-02-12 00:00:00', 20, '450.00', 1, '2020-02-11', NULL),
-(4, 4, '2020-02-06 00:00:00', 20, '1545.00', 1, '2020-02-11', NULL),
-(5, 7, '2020-02-14 00:00:00', 5, '150.00', 1, '2020-02-11', NULL),
 (6, 81, '1969-12-24 00:00:00', 51, '1200.00', 1, '2020-02-11', NULL),
-(7, 6, '2020-03-05 00:00:00', 20, '450.25', 1, '2020-03-05', NULL),
-(8, 20, '2020-03-05 00:00:00', 10, '1254.21', 1, '2020-03-05', NULL),
-(9, 21, '2020-03-05 00:00:00', 20, '1254.44', 1, '2020-03-05', NULL),
 (10, 3, '2020-03-25 00:00:00', 10, '1200.00', 1, '2020-03-25', NULL),
 (11, 4, '2020-10-25 00:00:00', 5, '4500.00', 1, '2020-06-16', NULL),
 (12, 8, '2020-08-01 00:00:00', 120, '2000.00', 1, '2020-08-03', NULL),
@@ -5037,7 +5021,7 @@ CREATE TABLE IF NOT EXISTS `profissionais` (
   KEY `fk_profissionais_especialidades1_idx` (`especialidades_id`),
   KEY `fk_profissionais_conselhos1_idx` (`conselhos_id`),
   KEY `fk_profissionais_estados1_idx` (`estados_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `profissionais`
@@ -5084,7 +5068,9 @@ INSERT INTO `profissionais` (`id`, `nome_prof`, `telefone_prof`, `conselhos_id`,
 (38, 'ROBERTA COSTA TEIXEIRA', '(86)99915-7796', 11, '9687', 17, 31, 1, '2019-01-10', NULL),
 (39, 'ROBERTA MENESES CALLAND ', '(86)98874-4900', 4, '138.342 – F ', 17, 29, 1, '2019-01-10', NULL),
 (40, 'TEREZA RAQUEL MOTA LIMA', '(86)98181-0012', 4, '261.855-F', 17, 29, 1, '2019-01-10', NULL),
-(41, 'THALENA SOARES MELO DOS SANTOS', '(86)99959-9338', 11, '11229', 17, 31, 1, '2019-01-10', NULL);
+(41, 'THALENA SOARES MELO DOS SANTOS', '(86)99959-9338', 11, '11229', 17, 31, 1, '2019-01-10', NULL),
+(42, 'bruno1222', '(56) 45648-4848', 2, '00000', 2, 2, 1, '2020-09-03', NULL),
+(43, 'b', '(84) 84564-6484', 2, '0000', 1, 2, 1, '2020-09-03', NULL);
 
 -- --------------------------------------------------------
 
@@ -5119,9 +5105,9 @@ INSERT INTO `status` (`id`, `descricao`, `valor`, `status`, `createdAt`, `update
 
 DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE IF NOT EXISTS `usuarios` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` varchar(200) NOT NULL,
-  `email` varchar(200) NOT NULL,
+  `email` varchar(200) DEFAULT NULL,
   `telefone` varchar(45) DEFAULT NULL,
   `senha` varchar(250) NOT NULL,
   `createdAt` datetime NOT NULL,
@@ -5132,7 +5118,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `principal` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`),
   KEY `fk_usuarios_clientes1_idx` (`clientes_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `usuarios`
@@ -5180,7 +5166,8 @@ INSERT INTO `usuarios` (`id`, `usuario`, `email`, `telefone`, `senha`, `createdA
 (39, 'robertameneses', 'email@email.com', '', 'ASf4sy4v8ZFTZUKaWCPT8gIVUENNXpOxPbat9b9PW++AjlZ4NZ4U420eWr+ZN9wS3j9KN1Z2z2wxZKoXhNRbzQ==', '2019-05-20 02:42:23', '2019-05-20 02:42:23', NULL, 39, 2, 0),
 (40, 'terezaraquel', 'email@email.com', '', 'ASf4sy4v8ZFTZUKaWCPT8gIVUENNXpOxPbat9b9PW++AjlZ4NZ4U420eWr+ZN9wS3j9KN1Z2z2wxZKoXhNRbzQ==', '2019-05-20 02:42:23', '2019-05-20 02:42:23', NULL, 40, 2, 0),
 (41, 'thalenasoares', 'email@email.com', '', 'ASf4sy4v8ZFTZUKaWCPT8gIVUENNXpOxPbat9b9PW++AjlZ4NZ4U420eWr+ZN9wS3j9KN1Z2z2wxZKoXhNRbzQ==', '2019-05-20 02:42:23', '2019-05-20 02:42:23', NULL, 41, 2, 0),
-(42, 'brunoscv', 'email@email.com', NULL, 'cc7736dff288c821174c143ae1c7e173b6b477d77849e889c880774343472f7e091e989284badf12ba52e02a2d0f5b0c566f5ccdc0066bcec560e85151305378HVuQtYC/ndIFmG07V7WOL8qdYZY1OlZ/tR071lYeKxo=', '2019-05-16 04:04:51', NULL, NULL, 42, 1, 1);
+(42, 'brunoscv', 'email@email.com', NULL, 'cc7736dff288c821174c143ae1c7e173b6b477d77849e889c880774343472f7e091e989284badf12ba52e02a2d0f5b0c566f5ccdc0066bcec560e85151305378HVuQtYC/ndIFmG07V7WOL8qdYZY1OlZ/tR071lYeKxo=', '2019-05-16 04:04:51', NULL, NULL, 42, 1, 1),
+(43, 'b', '', NULL, 'fffbcd08c047fded2c5f3679a8b8a381ed56d27b595fada99ce877b60c088fd9bd2f969d67982f37b7e1efcf69e75cd223f25ba5e9f6d6de8e200bf3f8b1f2e3bMiap4MTSH7/rezynyBqykZQkBgl88HNCQgfPibj8LQ=', '2020-09-03 15:56:07', NULL, NULL, 43, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -5243,7 +5230,8 @@ INSERT INTO `usuarios_perfis` (`usuarios_id`, `perfis_id`) VALUES
 (39, 5),
 (40, 5),
 (41, 5),
-(42, 4);
+(42, 4),
+(43, 5);
 
 -- --------------------------------------------------------
 
