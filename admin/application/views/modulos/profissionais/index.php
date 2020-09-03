@@ -42,17 +42,11 @@
 				<!-- Card header -->
 				<div class="card-header">
 					<h3 class="mb-0">Painel de Profissionais</h3>
-					
-					<p class="text-sm mb-0">
-						
-					</p>
 				</div>
-				
 				<div class="col-md-12">
 					<?php $this->load->view('layout/messages.php'); ?>
 				</div>
 				<div class="table-responsive py-4 p-2">
-					<?php $this->load->view('layout/messages'); ?>
 					<table class="table table-flush" id="datatable-basic">
 						<thead class="thead-light">
 								<tr>

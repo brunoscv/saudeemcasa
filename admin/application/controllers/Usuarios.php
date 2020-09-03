@@ -123,17 +123,17 @@ class Usuarios extends MY_Controller {
 				$usuario["tipo_id"]    = $this->input->post("tipo_id",TRUE);
 				$usuario["usuario_id"] = $this->input->post("usuario_id",TRUE);
 
-				//arShow($usuario['senha']);exit;
-				
-				switch ($usuario["tipo_id"]) {
-					case 1:
-						$usuarios = $this->db->select("nome_prof")->from("profissionais")->where("id", $usuario["usuario_id"])->get()->result();
-						$usuario["nome"] = $usuarios[0]->nome_prof;
-					break;					
-					default:
-						$usuario["nome"] = "Saude em Casa";
-					break;
-				}
+				// switch ($usuario["tipo_id"]) {
+				// 	case 1:
+				// 		$usuario["usuario"] = "Saude em Casa";
+				// 	break;					
+				// 	default:
+				// 		$usuarios = $this->db->select("nome_prof")->from("profissionais")->where("id", $usuario["usuario_id"])->get()->result();
+				// 		$usuario["nome"] = $usuarios[0]->nome_prof;
+				// 	break;
+				// }
+
+				// arShow($usuario);exit;
 				
 				$this->db->insert("usuarios", $usuario);
 				if( $this->input->post("perfis") ){
