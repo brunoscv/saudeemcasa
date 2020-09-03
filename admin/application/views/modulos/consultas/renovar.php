@@ -35,6 +35,10 @@
 					.
 					</p> -->
 				</div>
+				
+				<div class="col-md-12">
+					<?php $this->load->view('layout/messages.php'); ?>
+				</div>
 				<div class="card-header">
 				<form id="form_consultas" action="<?php echo current_url(); ?>" class="form-horizontal" method="post">
 						<input name="id" type="hidden" id="id" class="form-control" value="<?php echo set_value("id", @$item->id) ?>" />

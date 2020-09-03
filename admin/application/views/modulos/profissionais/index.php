@@ -47,6 +47,10 @@
 						
 					</p>
 				</div>
+				
+				<div class="col-md-12">
+					<?php $this->load->view('layout/messages.php'); ?>
+				</div>
 				<div class="table-responsive py-4 p-2">
 					<?php $this->load->view('layout/messages'); ?>
 					<table class="table table-flush" id="datatable-basic">

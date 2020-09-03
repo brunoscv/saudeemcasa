@@ -27,6 +27,10 @@
 				<div class="card-header">
 					<h3 class="mb-0">Contratos</h3>
 				</div>
+				
+				<div class="col-md-12">
+					<?php $this->load->view('layout/messages.php'); ?>
+				</div>
 				<div class="col-md-12">
 					<?php $this->load->view('layout/messages.php'); ?>
 				</div>
